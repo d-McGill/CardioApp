@@ -12,8 +12,7 @@
 </template>
 
 <script>
-//import Toggle from './components/Toggle.vue'
-import Toggle from '@/components/Toggle'
+import Toggle from './Toggle.vue'
 export default {
   props: ['mode'],
   name: 'Header',
