@@ -34,24 +34,25 @@ export default {
   font-weight: 900;
   padding: 45px;
 }
-
+/*
 .el-carousel__item:nth-child(2n) {
-  background-color: #fff;
+  /*background-color: #fff; 
 }
 
 .el-carousel__item:nth-child(2n + 1) {
-  background-color: #fff;
+ /* background-color: #fff; 
 }
+*/
 
 .el-carousel__container {
     position: relative;
-    height: 100px !important;
+    height: 100px !important; 
 }
 </style>
 
 <style scoped>
 .title{
-    margin: 0 0 -20px 0 !important;
-    font-size: 50px !important;
+  /*  margin: 0 0 -20px 0 !important; */
+    font-size: 50px !important; 
 }
 </style>

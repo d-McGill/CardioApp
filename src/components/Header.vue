@@ -1,30 +1,84 @@
 <template>
-<el-menu
-    :default-active="activeIndex"
-    class="el-menu-demo"
-    mode="horizontal"
-    @select="handleSelect">
-        <el-menu-item index="1"><router-link to="/">CardioApp</router-link></el-menu-item>
-        <el-menu-item index="2"><router-link to="/login">Login</router-link></el-menu-item>
-        <el-menu-item index="3"><router-link to="/register">Register</router-link></el-menu-item>
-        <el-menu-item index="4"><router-link to="/dashboard">Dashboard</router-link></el-menu-item>
-        <el-menu-item index="5"><router-link to="/help">Help</router-link></el-menu-item>
-  </el-menu>
+<header>
+      <nav>
+      <div index="1" class="nav-link"><router-link to="/">CardioApp</router-link></div>
+      <div index="2" class="nav-link"><router-link to="/login">Login</router-link></div>
+      <div index="3" class="nav-link"><router-link to="/register">Register</router-link></div>
+      <div index="4" class="nav-link"><router-link to="/dashboard">Dashboard</router-link></div>
+      <div index="5" class="nav-link"><router-link to="/help">Help</router-link></div>
+    </nav>
+    <Toggle :mode="mode" @toggle="$emit('toggle')"/>
+</header>
 </template>
 
 <script>
+//import Toggle from './components/Toggle.vue'
+import Toggle from '@/components/Toggle'
 export default {
+  props: ['mode'],
   name: 'Header',
+
+  components: {
+    Toggle
+  }
   
 }
 </script>
-<style>
+<style scoped>
+
 a:-webkit-any-link {
-    color: -webkit-link;
+    color: #2c3e50; 
     cursor: pointer;
     text-decoration: none !important;
-    margin: 0px !important;
+    margin: 0px !important; 
     font-size: 12pt;
     font-weight: 800;
+} 
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 25px;
+  height: 60px;
+  background: #C3C3C3;
+  transition: background 0.3s ease-in-out;
+  color: #f3f3f3;
 }
+.dark header {
+  background: #15202B;
+  
+}
+header h1 {
+  font-size: 32px;
+  text-transform: uppercase;
+  font-weight: 900;
+  
+}
+
+header nav {
+  display: flex;
+  height: 60px;
+}
+
+header nav .nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0px 15px;
+}
+.dark header nav .nav-link a{
+   color: #f3f3f3;
+}
+header nav .nav-link:hover {
+  background: #B0B0B0;
+}
+.dark header nav .nav-link:hover {
+  background: #101520;
+}
+
+.dark header nav .nav-link a{
+   color: #f3f3f3;
+}
+
+
 </style>
