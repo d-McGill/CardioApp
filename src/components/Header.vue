@@ -40,7 +40,8 @@ header {
   align-items: center;
   padding: 0px 25px;
   height: 60px;
-  background: #C3C3C3;
+  background: #eee;
+  box-shadow: 1px 1px 1px rgba(0.0,0.0,0.1);
   transition: background 0.3s ease-in-out;
   color: #f3f3f3;
 }
