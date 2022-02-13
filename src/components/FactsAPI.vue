@@ -99,9 +99,30 @@ function getAtrCardio() {
 .el-carousel__container{
     margin: 5% 0;
     border-radius: 8px;
+  /*  padding-left: 15rem;
+    padding-right: 15rem; */
 }
 .innerCar{
     padding: 5% 0 2% 2%;
 }
+
+.innerCar h4{
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
+.el-carousel__arrow {
+  background: #767676;
+}
+
+.el-carousel__arrow:hover {
+  background: #767676
+
+}
+/*
+.el-icon {
+  background: red;
+}
+*/
 </style>
 
