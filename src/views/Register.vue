@@ -3,55 +3,161 @@
     <el-col :span="8"></el-col>
     <el-col :span="8">
       <h1>Register for an account</h1>
-      <el-form ref="ruleFormRef" class="marginTB">
-       {{ isSame() }}
-        <el-form-item>
-          <label>Email Adress</label>
-          <el-input v-model="form.email" type="email"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <label>Password</label>
-         <el-input v-model="form.password" type="password" autocomplete="off" show-password></el-input>
-        </el-form-item>
-        <el-form-item>
-          <label>Confirm</label>
-         <el-input v-model="form.checkPass" type="password" autocomplete="off" show-password></el-input>
-        </el-form-item>
-        <p class="errorInfo">{{form.error}}</p>
-        <el-form-item>
-          <el-button type="primary" @click="submitForm(ruleFormRef)">Register</el-button>
-        </el-form-item>
-        <router-link to="/login" >Already have an account?</router-link>
-       </el-form>
+
+    <el-form label-width="95px" class="demo-ruleForm" @submit.prevent>
+    <h2>Register</h2>
+
+    <el-form-item label="First Name">
+      <el-input
+        type="text"
+        placeholder="First Name"
+        required
+        autocomplete="off"
+        v-model="firstName"
+      ></el-input>
+    </el-form-item>
+
+    <el-form-item label="Last Name">
+      <el-input
+        type="text"
+        placeholder="Surname"
+        required
+        autocomplete="off"
+        v-model="surname"
+      ></el-input>
+    </el-form-item>
+
+    <el-form-item label="Display Name">
+      <el-input
+        type="text"
+        placeholder="Display Name"
+        required
+        autocomplete="off"
+        v-model="displayName"
+      ></el-input>
+    </el-form-item>
+
+    <el-form-item label="Email">
+      <el-input
+        type="email"
+        placeholder="email"
+        required
+        autocomplete="off"
+        v-model="email"
+      ></el-input>
+    </el-form-item>
+
+    <el-form-item label="Password" prop="pass">
+      <el-input
+        type="password"
+        placeholder="password"
+        required
+        autocomplete="off"
+        show-password
+        v-model="password"
+      ></el-input>
+    </el-form-item>
+
+    <el-form-item label="Confirm Password" prop="pass">
+      <el-input
+        type="password"
+        placeholder="password"
+        required
+        autocomplete="off"
+        show-password
+        v-model="confirmPassword"
+      ></el-input>
+    </el-form-item>
+
+    <div v-if="errorRegistration">
+      <el-button plain type="danger" disabled icon="el-icon-error">
+        {{ errorRegistration }}
+      </el-button>
+    </div>
+
+    <el-form-item>
+      <el-button type="success" style="margin: auto" @click="register"
+        >Register</el-button
+      >
+    </el-form-item>
+  </el-form>
+
       </el-col>
     <el-col :span="8"></el-col>
   </el-row>
 
 </template>
-
 <script>
-import { reactive} from 'vue'
-export default {
-  name: "App",
-  setup() {
-  const form = reactive({
-    email: '',
-    password: '',
-    checkPass: '',
-    error: '' })
+import { ref, watch } from "vue";
+import { useRouter } from "vue-router";
+import { firebaseAuthentication } from "@/firebase/database";
 
-    function isSame(){
-      if(form.password !== form.checkPass){
-        form.error = "Please make sure password match each other";
-      }else{
-         form.error = "";
+export default {
+  name: "register",
+  emits: ["register-clicked"],
+
+  setup() {
+    const firstName = ref("");
+    const surname = ref("");
+    const displayName = ref("");
+    const email = ref("");
+    const password = ref("");
+    const confirmPassword = ref("");
+    const errorRegistration = ref("");
+
+    watch(confirmPassword, () => {
+      if (
+        password.value !== "" &&
+        confirmPassword.value !== "" &&
+        password.value !== confirmPassword.value
+      ) {
+        errorRegistration.value = "Passwords do not match!";
+      } else {
+        errorRegistration.value = null;
+      }
+    });
+
+    const router = useRouter();
+
+    function register() {
+      const info = {
+        email: email.value,
+        password: password.value,
+        displayName: displayName.value,
+      };
+
+      if (!errorRegistration.value) {
+        firebaseAuthentication
+          .createUserWithEmailAndPassword(info.email, info.password)
+          .then(
+            (userCredentials) => {
+              return userCredentials.user
+                .updateProfile({
+                  displayName: info.displayName,
+                })
+                .then(() => {
+                  router.replace("register");
+                });
+            },
+            (error) => {
+              errorRegistration.value = error.message;
+            }
+          );
       }
     }
 
-  return{form, isSame}
+    return {
+      firstName,
+      surname,
+      displayName,
+      email,
+      password,
+      confirmPassword,
+      errorRegistration,
+      register,
+    };
   },
 };
-
 </script>
 <style> 
   .marginTB{ margin: 5% 0};
