@@ -3,6 +3,13 @@
       <nav>
       <div index="1" class="nav-link"><router-link to="/">CardioApp</router-link></div>
       <div index="2" class="nav-link"><router-link to="/login">Login</router-link></div>
+   <!--      <router-link :to="{ name: 'Login' }"><el-button type="success" icon="el-icon-s-check" round v-if="!user">Login</el-button></router-link>
+       <router-link :to="{ name: 'Login' }"><el-button type="success" icon="el-icon-s-check" round v-if="user">Loger</el-button></router-link>
+     <div index="2" class="nav-link"><router-link :to="{ name: 'Login'}" round v-if="!user"> Login</router-link></div> 
+
+        <router-link :to="{ name: 'Login' }"><el-button type="success" icon="el-icon-s-check" round v-if="!user">Login</el-button></router-link -->
+
+
       <div index="3" class="nav-link"><router-link to="/register">Register</router-link></div>
       <div index="4" class="nav-link"><router-link to="/dashboard">Dashboard</router-link></div>
       <div index="5" class="nav-link"><router-link to="/help">Help</router-link></div>
