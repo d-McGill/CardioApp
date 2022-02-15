@@ -16,11 +16,9 @@
     <el-form class="demo-ruleForm" @submit.prevent>
        <div class="formWrapper">
   
-
-
     <el-form-item>
       <label>Username *</label>
-      <el-input type="email" placeholder="Email must be a vaild email address" required autocomplete="off" v-model="email"></el-input>
+      <el-input type="email" placeholder="Username must be a vaild email address" required autocomplete="off" v-model="email"></el-input>
     </el-form-item>
 
 
