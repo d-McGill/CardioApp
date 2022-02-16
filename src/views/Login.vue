@@ -58,6 +58,7 @@ export default {
       const info = {
         email: email.value,
         password: password.value,
+
       };
 
       firebaseAuthentication
