@@ -31,6 +31,11 @@ const routes = [
     path: '/reset',
     name: 'Reset',
     component: () => import('../views/Reset.vue')
+  },
+  {
+    path: '/search',
+    name: 'QuerySearch',
+    component: () => import('../views/QuerySearch.vue')
   }
 ]
 
