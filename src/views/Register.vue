@@ -171,7 +171,7 @@ export default {
   .formWrapper{
     height:500px;
     overflow: scroll;
-    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);
     padding: 5%;
    border-radius: 8px;
    margin:5% 0;
