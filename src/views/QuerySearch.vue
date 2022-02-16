@@ -5,19 +5,23 @@
     <el-tab-pane label="Cardiomypaty" name="first">
         <SearchData />
         </el-tab-pane>
-    <el-tab-pane label="Genes" name="second">Config</el-tab-pane>
+    <el-tab-pane label="Genes" name="second">
+        <SearchGene />
+    </el-tab-pane>
+   
   </el-tabs>
   </div>
 </template>
 <script>
 
 import SearchData from '../components/SearchData.vue';
+import SearchGene from '../components/SearchGene.vue';
 import { ref } from 'vue'
 
 export default {
   name: "App",
   components: {
-    SearchData
+    SearchData, SearchGene
 
   },
 

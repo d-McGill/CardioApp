@@ -17,7 +17,7 @@
         <table v-if="axios_response">
         <tr>
             <th style="width:40%">Name</th>
-            <th>Definition</th>
+            <th>Clinical Synopsis</th>
         </tr>
         <tr v-for="(data,index) in axios_response" :key="index">
             <td>{{data.name}}</td>
