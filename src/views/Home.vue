@@ -17,8 +17,9 @@
       <FactsAPI />
       <p>Peaked your interest or have something to add? Get started here....</p>
       <br/>
-      <el-button @click="$router.push('login')" type="primary">Login</el-button> 
-      <el-button @click="$router.push('register')" type="primary">Register</el-button>
+      <el-button v-if="!user" @click="$router.push('login')" type="primary">Login</el-button> 
+      <el-button v-if="!user" @click="$router.push('register')" type="primary">Register</el-button>
+      <el-button v-if="user" @click="logout, $router.push('login')" type="primary">Logout</el-button>
 </el-col>
 
     <el-col :span="1"></el-col>
@@ -29,9 +30,42 @@
 <script>
 
 import FactsAPI from '../components/FactsAPI.vue';
-
+import { ref } from "vue";
+import { firebaseAuthentication } from "@/firebase/database";
 export default {
   name: "App",
+
+      data () {
+
+      const user = ref(null);
+      firebaseAuthentication.onAuthStateChanged(currentUser =>{
+        if(currentUser) {
+          user.value = currentUser.email;
+          this.log = firebaseAuthentication.currentUser || true;
+          this.sign = firebaseAuthentication.currentUser || false;
+        } else {
+          user.value == null;
+        }
+      });
+      
+      function logout() {
+
+      firebaseAuthentication.signOut().then(
+        () => {
+          user.value = null;
+          this.$router.replace("/login");
+        },
+        error => {
+          error.value = error.message;
+        }
+      );
+    }
+    return {
+      user,
+      logout,
+    };
+  },
+
   components: {
     FactsAPI
 
