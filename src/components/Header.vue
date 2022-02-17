@@ -6,7 +6,6 @@
       <div index="3" class="nav-link"><router-link to="/register">Register</router-link></div>
       <div index="4" class="nav-link"><router-link to="/dashboard">Dashboard</router-link></div>
       <div index="5" class="nav-link"><router-link to="/help">Help</router-link></div>
-      <div index="5" class="nav-link"><router-link to="/search">Search</router-link></div>
     </nav>
     <Toggle :mode="mode" @toggle="$emit('toggle')"/>
 </header>
