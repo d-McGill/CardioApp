@@ -36,6 +36,11 @@ const routes = [
     path: '/search',
     name: 'QuerySearch',
     component: () => import('../views/QuerySearch.vue')
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: '404',
+    component: () => import('../views/404.vue')
   }
 ]
 

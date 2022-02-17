@@ -3,10 +3,10 @@
       <nav>
         
       <div index="1" class="nav-link"><router-link to="/">CardioApp</router-link></div>
-      <div index="2" class="nav-link"><router-link :to="{ name: 'Login'}" v-if="!user"> Login</router-link></div> 
-      <div index="3" class="nav-link"><router-link to="/register">Register</router-link></div>
-      <div index="4" class="nav-link"><router-link to="/dashboard">Dashboard</router-link></div>
-      <div index="5" class="nav-link"><router-link to="/help">Help</router-link></div> 
+      <div index="2" class="nav-link" v-if="!user"><router-link :to="{ name: 'Login'}"> Login</router-link></div> 
+      <div index="3" class="nav-link" v-if="!user"><router-link to="/register">Register</router-link></div>
+      <div index="4" class="nav-link" v-if="user"><router-link to="/dashboard">Dashboard</router-link></div>
+      <div index="4" class="nav-link" v-if="user"><router-link to="/search">Learn</router-link></div>
       <div index="6" class="nav-link"><router-link :to="{ name: 'Login'}" v-if="user" @click="logout"> Logout</router-link></div> 
     </nav>
     <Toggle :mode="mode" @toggle="$emit('toggle')"/>

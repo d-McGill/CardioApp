@@ -2,27 +2,29 @@
   <el-row class="marginTB">
     <el-col :span="8"></el-col>
     <el-col :span="8">
-      <h1>LOGIN PAGE</h1>
+      <h1>Login</h1>
       <el-form ref="loginForm" class="marginTB" @submit.prevent>
+     <div v-if="errorFirebase" class="errorInfo">
+        <h4>Form Vaildation Error</h4>
+        <h5>{{ errorFirebase }}</h5>
+      </div>
+        <div class="formWrapper">
         <el-form-item>
-          <label>Email Address/Username</label>
-          <el-input v-model="email" type="email"></el-input>
+          <label>Username</label>
+          <el-input v-model="email" placeholder="Username must be a vaild email address" type="email"></el-input>
         </el-form-item>
 
         <el-form-item>
           <label>Password</label>
-          <el-input v-model="password" type="password"></el-input>
+          <el-input v-model="password"  placeholder="Need to rest? Rest with the link below" show-password type="password"></el-input>
         </el-form-item>
+      </div>
 
-        <div v-if="errorFirebase">
-          <el-button plain type="danger" disabled icon="el-icon-error">
-            {{ errorFirebase }}
-          </el-button>
-        </div>
+
 
         <el-form-item>
 
-          <el-button type="success" style="margin: auto" @click="login">
+          <el-button type="primary" style="margin: auto" @click="login">
         Login
           </el-button>
           <!--
@@ -31,6 +33,7 @@
           > -->
           <router-link to="/reset">Forgot password?</router-link>
         </el-form-item>
+
       </el-form>
     </el-col>
     <el-col :span="8"></el-col>
@@ -65,7 +68,7 @@ export default {
         .signInWithEmailAndPassword(info.email, info.password)
         .then(
           () => {
-            router.push("/");
+            router.push("/dashboard");
           },
           (error) => {
             errorFirebase.value = error.message;
@@ -81,5 +84,35 @@ export default {
 .marginTB {
   margin: 5% 0;
 }
+
+  .el-button {
+  width:40%;
+  font-size: 18pt;
+  padding: 5% 8%;
+}
+.el-button  a{
+  text-decoration: none;
+  color:#fff;
+}
+
+  .formWrapper{
+    box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);
+    padding: 2% 5%;
+    background-color:#eee;
+    border-radius: 8px;
+    margin:5% 0;
+  }
+
+.errorInfo{
+  background-color: #FF0000;
+  color: #fff;
+  padding:2%;
+  border-radius: 8px;
+}
+
+label{
+  font-weight: 900;
+}
+
 </style>
 

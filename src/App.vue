@@ -2,12 +2,14 @@
   <div class="app" :class="mode">
   <Header :mode="mode" @toggle="toggle"/>
   <router-view/>
+  <Footer/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'Home',
@@ -18,7 +20,7 @@ export default {
   },
 
   components: {
-    Header
+    Header,Footer
   },
   methods: {
     toggle (){

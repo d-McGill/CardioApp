@@ -1,26 +1,19 @@
 <template>
   <el-row class="marginTB">
     <el-col :span="7">
-      <div v-if="errorRegistration" class="errorInfo">
-        <h1>Form Vaildation Error</h1>
-        <div class="innerError">
-        <h2>Please rectify the following:</h2>
-        <br/>
-        <h3>{{ errorRegistration }}</h3>
-        <br/>
-        </div>
-    </div>
     </el-col>
     <el-col :span="10">
       <h1>Register for an account</h1>
     <el-form class="demo-ruleForm" @submit.prevent>
+      <div v-if="errorRegistration" class="errorInfo">
+        <h4>Form Vaildation Error</h4>
+        <h5>{{ errorRegistration }}</h5>
+      </div>
        <div class="formWrapper">
-  
     <el-form-item>
       <label>Username *</label>
       <el-input type="email" placeholder="Username must be a vaild email address" required autocomplete="off" v-model="email"></el-input>
     </el-form-item>
-
 
     <el-form-item prop="pass">
        <label>Password *</label>
@@ -158,6 +151,11 @@ export default {
 </script>
 <style> 
   .marginTB{ margin: 2% 0};
+
+
+h1{
+  font-weight: 900;
+}
 </style>
 <style scoped>
     .errorInfo{
@@ -169,12 +167,11 @@ export default {
 
 
   .formWrapper{
-    height:500px;
-    overflow: scroll;
     box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);
-    padding: 5%;
-   border-radius: 8px;
-   margin:5% 0;
+    padding: 2% 5%;
+    background-color:#eee;
+    border-radius: 8px;
+    margin:5% 0;
   }
 
   .el-button {
@@ -188,16 +185,14 @@ export default {
 }
 
 .errorInfo{
-  border: 1px solid  #FF0000;
-  padding:5%;
+  background-color: #FF0000;
+  color: #fff;
+  padding:2%;
   border-radius: 8px;
 }
-
-.innerError{
-  background-color: #fff; 
-  border-radius: 8px;
-  padding: 5%;
-
+ label{
+  font-weight: 900;
 }
+
 </style>
 
