@@ -7,13 +7,12 @@
         <div class="formWrapper">
         <el-form-item>
           <label>Enter email address</label>
-          <el-input v-model="form.email" type="email"></el-input>
+          <el-input v-model="email" type="email"></el-input>
         </el-form-item>
         </div>
-        <el-form-item>
-          <el-button type="primary" @click="submitForm(resetPass)"
-            >Reset Password</el-button>
-        </el-form-item>
+    <el-form-item>
+      <el-button type="primary" style="margin: auto" @click="resetPass">Reset</el-button>
+    </el-form-item>
       </el-form>
     </el-col>
     <el-col :span="8"></el-col>
@@ -21,15 +20,28 @@
 </template>
 
 <script>
-import { reactive } from "vue";
+  import { ref} from "vue";
+  import { useRouter } from "vue-router";
+import firebase from "firebase/app";
 export default {
-  name: "App",
-
+  name: "register",
   setup() {
-    const form = reactive({
-      email: ""
-    });
-    return { form };
+    const email = ref("");
+
+    const router = useRouter();
+
+    function resetPass() {
+      const info = {
+        email: email.value
+
+      };
+
+       firebase.auth().sendPasswordResetEmail(info.email)
+       .then(
+        router.replace("login"))
+    }
+
+    return {email,resetPass};
   },
 };
 </script>
