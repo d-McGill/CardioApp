@@ -7,6 +7,7 @@
             <label>Email: {{address}} </label> <br><br><br>
             <label>Email: {{phoneNumber}} </label> <br><br><br>
             <label>Email: {{institute}} </label> <br><br><br>
+             <el-button type="primary" style="margin: auto">Delete</el-button>
     </el-card>
     </el-row>
 </template>
@@ -61,7 +62,7 @@ export default {
     background-color:#eee;
     border-radius: 8px;
   /*  margin:5% 0; */
-    margin-left: 35%;
+    margin-left: 40%;
     height: 30rem;
   }
 
