@@ -26,42 +26,31 @@
         <el-option value="Right ventricular cardiomyopathy" selected>Right ventricular cardiomyopathy</el-option>
     </el-select>
     <el-button type="primary">Genrate Graph</el-button>
-    
-  <el-empty description="no data selected"></el-empty>
-
-
-    </el-tab-pane>
-    <el-tab-pane label="Add Data" name="second">
-      <el-upload
-    class="upload-demo"
-    drag
-    action="https://jsonplaceholder.typicode.com/posts/"
-    multiple
-  >
-    <el-icon class="el-icon--upload"><upload-filled /></el-icon>
-    <div class="el-upload__text">
-      Drop file here or <em>click to upload</em>
-    </div>
-    <template #tip>
-      <div class="el-upload__tip">
-        jpg/png files with a size less than 500kb
-      </div>
-    </template>
-  </el-upload>
-    
-    
-    
-    </el-tab-pane>
-   
-  </el-tabs>
+    <el-empty description="no data selected"></el-empty>
+  </el-tab-pane>
+  
+  <el-tab-pane label="Add Data" name="second">
+    <el-row>
+      <el-col :span="7"></el-col>
+     <el-col :span="10">
+      <Upload />
+     </el-col>
+      <el-col :span="7"></el-col>
+    </el-row>
+   </el-tab-pane>
+ </el-tabs>
   </div>
 </template>
 <script>
-
+import Upload from '../components/Upload.vue';
 import { ref, reactive } from 'vue';
 
 export default {
  name: "App",
+   components: {
+    Upload
+
+  },
   setup(){
 
   const activeName = ref('first')
@@ -71,7 +60,7 @@ export default {
       cardio: ''
     
     })
-  
+
   return {activeName, data}
   
   }
