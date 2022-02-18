@@ -5,6 +5,8 @@
       action="https://jsonplaceholder.typicode.com/posts/"
       :limit="1"
       :on-exceed="handleExceed"
+      :on-change="change"
+      :before-upload="handleBefore"
       :auto-upload="false"
       accept="application/JSON">
 
@@ -36,12 +38,36 @@ const upload = ref()
 const handleExceed = (files) => {
   upload.value.clearFiles()
   upload.value.handleStart(files[0])
+  }
+
+
+const handleBefore = (file)=>{
+  console.log(file.name)
 }
+
+
+
 const submitUpload = () => {
   upload.value.submit()
 }
+
+
+function change(file){
+        console.log(file.value)
+        
+}
+
+
+
+
+
+
+
+
+
+
   
-  return {handleExceed, submitUpload, upload}
+  return {handleExceed, submitUpload, upload, handleBefore, change}
     },
 }
 </script>
