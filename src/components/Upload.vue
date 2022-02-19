@@ -14,26 +14,40 @@
       <el-button type="primary" class="disabled">Select File</el-button>
     </template>
     
+    <input type="file" ref="doc" @change="change" />
     <el-button class="ml-3" type="success" @click="submitUpload">Upload Data</el-button>
-    
+     
+     <div v-if="content">
+       <h1>{{fileName}}</h1>
+       <button @click="cancelUpload">X</button>
+
+     </div>
+
+
+  
     <template #tip>
       <div class="el-upload__tip" style="color: red">
       One File can be uploaded at once, only JSON files will be accepted and new file will cover the old file
       </div>
     </template>
 
+    
+
     </el-upload>
+  <!--  <h1>{{content}}</h1> -->
 </template>
 
   <script>
 
 import { ref} from 'vue';
-
+import firebase from "firebase/app";
 export default {
  name: "App",
   setup(){
 
-const upload = ref()
+const upload = ref();
+const content = ref();
+const fileName = ref();
 
 const handleExceed = (files) => {
   upload.value.clearFiles()
@@ -43,31 +57,45 @@ const handleExceed = (files) => {
 
 const handleBefore = (file)=>{
   console.log(file.name)
+// console.log(file);
 }
 
 
 
 const submitUpload = () => {
-  upload.value.submit()
+ // upload.value.submit()
+ // content.value.submit();
+ var user = firebase.auth().currentUser;
+
+  firebase.firestore().collection('graphdata').doc('dv14VR2epQxwrzpMYLHK').set({
+        user: user.uid,         
+        content: content.value           
+        });
+}
+
+const cancelUpload = () =>{
+  fileName.value = "";
+}
+
+function change(e){
+
+      const file = e.target.files[0];
+      console.log(file.name);
+      const reader = new FileReader();
+      if (file.name.includes(".json")) {
+        reader.onload = (res) => {
+          content.value = res.target.result;
+          console.log(res.target.result);
+          console.log(content.value);
+          fileName.value = file.name;
+        };
+        reader.onerror = (err) => console.log(err);
+        reader.readAsText(file);
+      } 
 }
 
 
-function change(file){
-        console.log(file.value)
-        
-}
-
-
-
-
-
-
-
-
-
-
-  
-  return {handleExceed, submitUpload, upload, handleBefore, change}
+  return {handleExceed, submitUpload, upload, handleBefore, change, content, cancelUpload, fileName}
     },
 }
 </script>
