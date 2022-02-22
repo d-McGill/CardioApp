@@ -15,14 +15,13 @@
     </template>
     
     <input type="file" ref="doc" @change="change" />
-    <el-button class="ml-3" type="success" @click="submitUpload">Upload Data</el-button>
+    <el-button class="ml-3" type="success" @click="submitUpload(jsonC)">Upload Data</el-button>
      
      <div v-if="content">
        <h1>{{fileName}}</h1>
        <button @click="cancelUpload">X</button>
 
      </div>
-
 
   
     <template #tip>
@@ -48,6 +47,7 @@ export default {
 const upload = ref();
 const content = ref();
 const fileName = ref();
+const jsonC = ref(); 
 
 const handleExceed = (files) => {
   upload.value.clearFiles()
@@ -57,20 +57,28 @@ const handleExceed = (files) => {
 
 const handleBefore = (file)=>{
   console.log(file.name)
-// console.log(file);
 }
 
 
 
-const submitUpload = () => {
- // upload.value.submit()
- // content.value.submit();
+const submitUpload = (jsonC) => {
+ 
  var user = firebase.auth().currentUser;
 
-  firebase.firestore().collection('graphdata').doc('dv14VR2epQxwrzpMYLHK').set({
-        user: user.uid,         
-        content: content.value           
-        });
+  for(var i = 0; i < jsonC.length; i++) {
+        var obj = jsonC[i];
+
+        firebase.firestore().collection("graphdata").add({
+        user: user.uid, 
+        ledv: obj.ledv,
+        lesv: obj.lesv,
+        lsv: obj.lsv,
+        lvef: obj.lvef,
+        lvmass: obj.lvmass
+  })
+}
+
+       console.log(jsonC.value)
 }
 
 const cancelUpload = () =>{
@@ -80,14 +88,20 @@ const cancelUpload = () =>{
 function change(e){
 
       const file = e.target.files[0];
-      console.log(file.name);
       const reader = new FileReader();
       if (file.name.includes(".json")) {
         reader.onload = (res) => {
+
           content.value = res.target.result;
-          console.log(res.target.result);
-          console.log(content.value);
+          
           fileName.value = file.name;
+
+
+          let jsonContent = JSON.parse(content.value);
+          console.log(content.value);
+          jsonC.value = jsonContent;
+          console.log(jsonContent);
+
         };
         reader.onerror = (err) => console.log(err);
         reader.readAsText(file);
@@ -95,7 +109,7 @@ function change(e){
 }
 
 
-  return {handleExceed, submitUpload, upload, handleBefore, change, content, cancelUpload, fileName}
+  return {handleExceed, submitUpload, upload, handleBefore, change, content,cancelUpload, fileName, jsonC}
     },
 }
 </script>
