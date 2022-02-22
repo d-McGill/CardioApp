@@ -68,13 +68,26 @@ const submitUpload = (jsonC) => {
   for(var i = 0; i < jsonC.length; i++) {
         var obj = jsonC[i];
 
-        firebase.firestore().collection("graphdata").add({
+        firebase.firestore().collection("graphtest").add({
         user: user.uid, 
         ledv: obj.ledv,
+        redv: obj.redv,
         lesv: obj.lesv,
-        lsv: obj.lsv,
+        resv: obj.resv,
         lvef: obj.lvef,
-        lvmass: obj.lvmass
+        rvef: obj.rvef,
+        lvmass: obj.lvmass,
+        rvmass: obj.rvmass,
+        lsv: obj.lsv,
+        rsv: obj.rsv,        
+        scar: obj.scar,
+        female: obj.female,
+        AgeatMRI: obj.AgeatMRI,
+        ApicalHCM: obj.ApicalHCM,
+        SuddenCardiacDeath: obj.SuddenCardiacDeath,
+        Hypertension: obj.Hypertension,
+        Diabetes: obj.Diabetes,
+        Myectomy: obj.Myectomy
   })
 }
 
