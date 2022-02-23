@@ -1,39 +1,17 @@
- <template>
- <el-upload
-      ref="upload"
-      class="upload-demo"
-      action="https://jsonplaceholder.typicode.com/posts/"
-      :limit="1"
-      :on-exceed="handleExceed"
-      :on-change="change"
-      :before-upload="handleBefore"
-      :auto-upload="false"
-      accept="application/JSON">
-
-    <template #trigger>
-      <el-button type="primary" class="disabled">Select File</el-button>
-    </template>
-    
-    <input type="file" ref="doc" @change="change" />
+<template>
+<br/>
+    <input type="file" ref="doc" @change="change" id="file" class="inputfile" name="file" />
+    <label for="file">Choose a file</label>
     <el-button class="ml-3" type="success" @click="submitUpload(jsonC)">Upload Data</el-button>
-     
      <div v-if="content">
-       <h1>{{fileName}}</h1>
-       <button @click="cancelUpload">X</button>
-
-     </div>
-
-  
-    <template #tip>
-      <div class="el-upload__tip" style="color: red">
-      One File can be uploaded at once, only JSON files will be accepted and new file will cover the old file
+       <table class="fileTable">
+         <tr>
+           <td style="width:50%">{{fileName}}</td>
+           <td><button @click="cancelUpload" class="xButton">X</button></td>
+         </tr>
+          </table>
       </div>
-    </template>
 
-    
-
-    </el-upload>
-  <!--  <h1>{{content}}</h1> -->
 </template>
 
   <script>
@@ -128,6 +106,56 @@ function change(e){
 </script>
 
 <style scoped>
+
+.fileTable{
+  width:100%;
+  margin:5%;
+  font-size: 20pt;
+  font-weight: 900;
+  background-color: #eee;
+  padding:5%;
+}
+
+
+.xButton{
+  padding:5%;
+  text-align: center;
+  width: 100%;
+  font-size: 20pt;
+  border: 1px solid red;
+  color: red;
+
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: var(--el-color-primary);
+    display: inline-block;
+    margin: 0 5%;
+    padding: 5px 30px;
+    border-radius: 8px
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: #53a8ff;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
 
 .el-button {
   width:50%;
