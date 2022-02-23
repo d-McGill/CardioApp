@@ -46,7 +46,7 @@ const submitUpload = (jsonC) => {
   for(var i = 0; i < jsonC.length; i++) {
         var obj = jsonC[i];
 
-        firebase.firestore().collection("gdatatest").add({
+        firebase.firestore().collection("graphdata").add({
         user: user.uid, 
         ledv: obj.ledv,
         redv: obj.redv,
