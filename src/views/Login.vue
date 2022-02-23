@@ -11,7 +11,7 @@
         <div class="formWrapper">
         <el-form-item>
           <label>Username</label>
-          <el-input v-model="email" placeholder="Username must be a vaild email address" type="email"></el-input>
+          <el-input v-model="email" placeholder="Username must be a vaild email address" type="email" id="email"></el-input>
         </el-form-item>
 
         <el-form-item>
@@ -24,7 +24,7 @@
 
         <el-form-item>
 
-          <el-button type="primary" style="margin: auto" @click="login">
+          <el-button type="primary" style="margin: auto" @click="login" id="loginButton">
         Login
           </el-button>
           <!--
