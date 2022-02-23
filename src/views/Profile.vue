@@ -4,9 +4,9 @@
     <el-card class="box-card">
             <label>Name: {{user}} </label> <br><br><br>
             <label>Email: {{email}} </label> <br><br><br>
-            <label>Email: {{address}} </label> <br><br><br>
-            <label>Email: {{phoneNumber}} </label> <br><br><br>
-            <label>Email: {{institute}} </label> <br><br><br>
+            <label>Address: {{address}} </label> <br><br><br>
+            <label>Phone Number: {{phoneNumber}} </label> <br><br><br>
+            <label>Institute Name: {{institute}} </label> <br><br><br>
              <el-button type="primary" style="margin: auto">Delete</el-button>
     </el-card>
     </el-row>
