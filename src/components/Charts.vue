@@ -36,7 +36,7 @@
 
     {{scar}}
    
-   {{sortDataG()}}
+{{sortDataG()}}
 
 
 
@@ -166,10 +166,9 @@ export default {
 
 const scar = []
 
-
     function sortDataG(){
          for (let index in dataG.value){
-             scar.push(index);
+             scar.push(parseInt(index));
          }
       
     }
