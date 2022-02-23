@@ -30,9 +30,20 @@
       :options="chartOptions"
       :series="series"
     ></apexchart>
+
+
+    <p v-once>{{getX()}}</p> 
+
+    {{scar}}
+   
+   {{sortDataG()}}
+
+
+
 </template>
 <script>
 import { ref } from "vue";
+import { firebaseFireStore } from "@/firebase/database";
 export default {
  name: "App",
   setup(){
@@ -91,7 +102,81 @@ export default {
       },
     ]);
 
-    return { chartOptions, series };
+    
+
+        const dataG = ref([
+      {
+         AgeatMRI: '',
+         ApicalHCM: '',
+         Diabetes: '',
+         Hypertension: '',
+         Myectomy: '',
+         SuddenCardiacDeath: '',
+         female: '',
+         ledv: '',
+         lesv: '',
+         lsv: '',
+         lvef: '',
+         lvmass: '',
+         redv: '',
+         resv: '',
+         rsv: '',
+         rvef: '',
+         scar: '',
+
+      },
+
+    ]);
+
+   
+  function getX() {
+
+   firebaseFireStore
+     .collection("graphtest")
+   .onSnapshot((snapShot) => {
+       const snapData = [];
+  snapShot.forEach((doc) => {
+           snapData.push({
+         AgeatMRI: doc.data().AgeatMRI,
+         ApicalHCM: doc.data().ApicalHCM,
+         Diabetes: doc.data().Diabetes,
+         Hypertension: doc.data().Hypertension,
+         Myectomy: doc.data().Myectomy,
+         SuddenCardiacDeath: doc.data().SuddenCardiacDeath,
+         Hfemale: doc.data().female,
+         ledv: doc.data().ledv,
+         lesv: doc.data().lesv,
+         lsv: doc.data().lsv,
+         lvef: doc.data().lvef,
+         lvmass: doc.data().lvmass,
+         redv: doc.data().redv,
+         resv: doc.data().resv,
+         rsv: doc.data().rsv,
+         rvef: doc.data().rvef,
+         scar: doc.data().scar,
+
+           });
+         });
+        console.log(snapData)
+         dataG.value = snapData;
+         sortDataG();
+         });
+  }
+
+
+const scar = []
+
+
+    function sortDataG(){
+         for (let index in dataG.value){
+             scar.push(index);
+         }
+      
+    }
+
+
+
+    return { chartOptions, series,dataG,getX, sortDataG, scar};
   },
 
   }
