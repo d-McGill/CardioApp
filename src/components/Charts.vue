@@ -1,5 +1,5 @@
 <template>
-    <el-select class="m-2" placeholder="Select" size="large">
+    <el-select v-model="dataTerm.x" class="m-2" placeholder="Select" size="large">
         <el-option value="MYH7" selected>MYH7</el-option>
         <el-option value="MYBPC3" selected>MYBPC3</el-option>
         <el-option value="TNNT2" selected>TNNT2</el-option>
@@ -11,7 +11,7 @@
         <el-option value="TTN" selected>TTN</el-option>
     </el-select>
 
-    <el-select class="m-2" placeholder="Select" size="large">
+    <el-select  v-model="dataTerm.y" class="m-2" placeholder="Select" size="large">
         <el-option value="Cardiomyopathy" selected>Cardiomyopathy</el-option>
         <el-option value="Hypertrophic cardiomyopathy" selected>Hypertrophic cardiomyopathy</el-option>
         <el-option value="Noncompaction cardiomyopathy" selected>Noncompaction cardiomyopathy</el-option>
@@ -21,13 +21,16 @@
         <el-option value="Takotsubo cardiomyopathy" selected>Takotsubo cardiomyopathy</el-option>
         <el-option value="Right ventricular cardiomyopathy" selected>Right ventricular cardiomyopathy</el-option>
     </el-select>
-    <el-button type="primary">Genrate Graph</el-button>
+
+    <el-select  v-model="dataTerm.chart" class="m-2" placeholder="Select" size="large">
+        <el-option value="line" selected>Line</el-option>
+        <el-option value="bar" selected>Bar</el-option>
+    </el-select>
+
+    <el-button type="primary"  @click="createGraph()">Genrate Graph</el-button>
     <el-empty description="no data selected"></el-empty>
 
-    <p v-once>{{getX()}}</p> 
-<p v-once> {{sortDataG()}}</p>
-
-<graph :graphData=graphData></graph>
+<graph :graphData=scar></graph>
 
 </template>
 <script>
@@ -38,10 +41,16 @@ export default {
   components: { Graph },
  name: "App",
   setup(){
-
-    const graphData = reactive([1,2,9,3])
+    const graphData = []
     
-        const dataG = ref([
+  const dataTerm = reactive({
+      x: '',
+      y: '',
+      chart: '',
+    
+    })
+
+  const dataG = ref([
       {
          AgeatMRI: '',
          ApicalHCM: '',
@@ -64,6 +73,12 @@ export default {
       },
 
     ]);
+
+
+  function createGraph(){
+    getX()
+  }
+
 
 
   function getX() {
@@ -95,23 +110,68 @@ export default {
            });
          });
          dataG.value = snapData;
+         
          sortDataG();
          });
   }
 
 
 const scar = reactive([0])
+const rvef = reactive([0])
+const rsv = reactive([0])
+const resv = reactive([0])
+const redv = reactive([0])
+const lvmass = reactive([0])
+const lvef = reactive([0])
+const lsv = reactive([0])
+const lesv = reactive([0])
+const ledv = reactive([0])
+const Hfemale = reactive([0])
+const SuddenCardiacDeath = reactive([0])
+const Myectomy = reactive([0])
+const Hypertension = reactive([0])
+const Diabetes = reactive([0])
+const ApicalHCM = reactive([0])
+const AgeatMRI = reactive([0])
+
 
     function sortDataG(){
          for (let index in dataG.value){
              scar.push(parseInt(index));
          }
+        
+        console.log
+       
       
     }
 
 
 
-    return {dataG,getX, sortDataG, scar, graphData};
+    return {
+      dataG,
+      getX, 
+      sortDataG, 
+      scar, 
+      graphData,
+      dataTerm,
+      createGraph,
+      rvef,
+      rsv,
+      resv,
+      redv,
+      lvmass,
+      lvef ,
+      lsv ,
+      lesv,
+      ledv,
+      Hfemale ,
+      SuddenCardiacDeath,
+      Myectomy ,
+      Hypertension,
+      Diabetes,
+      ApicalHCM,
+      AgeatMRI,
+      };
   },
 
   }
