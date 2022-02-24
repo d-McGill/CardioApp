@@ -25,10 +25,8 @@
     <el-empty description="no data selected"></el-empty>
 
     <p v-once>{{getX()}}</p> 
-
- {{scar}}
-   
 <p v-once> {{sortDataG()}}</p>
+
 <graph :graphData=graphData></graph>
 
 </template>
@@ -41,13 +39,7 @@ export default {
  name: "App",
   setup(){
 
-    const graphData = reactive({      
-      data: [5,3,2,1],
-    })
-
-
-
-
+    const graphData = reactive([1,2,9,3])
 
         const dataG = ref([
       {
@@ -102,7 +94,6 @@ export default {
 
            });
          });
-        console.log(snapData)
          dataG.value = snapData;
          sortDataG();
          });

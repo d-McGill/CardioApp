@@ -77,7 +77,7 @@ console.log()
     const series = ref([
       {
         name: "one",
-        data: props.graphData.data,
+        data: props.graphData,
       },
     ]);
   
