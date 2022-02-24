@@ -40,7 +40,7 @@ export default {
   setup(){
 
     const graphData = reactive([1,2,9,3])
-
+    
         const dataG = ref([
       {
          AgeatMRI: '',

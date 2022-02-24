@@ -1,6 +1,5 @@
 <template>
 
-{{graphData.data}}
     <apexchart
       ref="demoChart"
       type="line"
@@ -55,7 +54,7 @@ console.log()
         },
       },
       xaxis: {
-        categories: props.graphData.data,
+        categories: props.graphData,
         title: {
           text: "Month",
         },
