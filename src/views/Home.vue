@@ -73,10 +73,16 @@ export default {
 };
 
 </script>
-
+<style>
+.innerCar {
+    padding: 2% 0% 5% 0%;
+    background-color: #eee;
+    border-radius: 8px;
+}
+</style>
 <style scoped>
 .title{
-  /*  margin: 0 0 -20px 0 !important; */
+  margin: 0 0 -5px 0 !important;
     font-size: 60px !important; 
     margin-top:5%;
 }

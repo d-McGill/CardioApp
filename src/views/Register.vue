@@ -157,7 +157,7 @@ h1{
   font-weight: 900;
 }
 </style>
-<style scoped>
+<style>
     .errorInfo{
       font-size: 14px !important;
       color: red;

@@ -46,7 +46,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
   .formWrapper{
     box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);
     padding: 2% 5%;

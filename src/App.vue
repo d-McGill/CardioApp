@@ -59,6 +59,55 @@ export default {
   color: #f3f3f3;
 }
 
+.dark .formWrapper{
+    background-color: #15202B;
+    color: #fff;
+
+}
+
+.dark footer{
+    background-color: #15202B;
+    color: #fff;
+
+}
+
+.dark footer a{
+    color: #fff;
+}
+
+.dark a{
+    color: #fff;
+
+}
+
+.dark #tab-second {
+    color: #fff;
+}
+
+.dark #tab-first {
+    color: #fff;
+}
+
+.dark .innerCar {
+    background-color: #15202B;
+    color: #fff;
+    
+}
+
+.dark table {
+    background-color: #15202B;
+    color: #fff;
+    
+}
+
+.dark .fileTable {
+    background-color: #15202B;
+    color: #fff;
+    
+}
+
+
+
 /*
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
