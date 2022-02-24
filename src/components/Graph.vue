@@ -1,13 +1,15 @@
 <template>
+
+{{graphData.data}}
     <apexchart
       ref="demoChart"
       type="line"
       height="350"
       width="500"
       :options="chartOptions"
-      :series="props"
+      :series="series"
     ></apexchart>
-{{graphData.data}}
+
 </template>
 <script>
 import { ref} from "vue";
@@ -21,6 +23,11 @@ export default {
 
 },
   setup(props){
+
+  
+
+console.log()
+
 
 
     const chartOptions = ref({
@@ -48,7 +55,7 @@ export default {
         },
       },
       xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
+        categories: props.graphData.data,
         title: {
           text: "Month",
         },
@@ -70,10 +77,10 @@ export default {
     const series = ref([
       {
         name: "one",
-        data: [0,0,0],
+        data: props.graphData.data,
       },
     ]);
-  console.log(props)
+  
     return {chartOptions, series};
   },
 

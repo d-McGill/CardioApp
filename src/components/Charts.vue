@@ -42,7 +42,7 @@ export default {
   setup(){
 
     const graphData = reactive({      
-      data: [2,2,2,2],
+      data: [5,3,2,1],
     })
 
 
