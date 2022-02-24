@@ -6,7 +6,7 @@
 <script>
 
 </script>
-<style scoped>
+<style>
 footer{
     margin:5% 0 0 0;
     padding:2% 5%;
