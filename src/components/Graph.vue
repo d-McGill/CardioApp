@@ -5,9 +5,9 @@
       height="350"
       width="500"
       :options="chartOptions"
-      :series="series"
+      :series="props"
     ></apexchart>
-
+{{graphData.data}}
 </template>
 <script>
 import { ref} from "vue";
@@ -20,8 +20,7 @@ export default {
      }
 
 },
-  setup(){
-
+  setup(props){
 
 
     const chartOptions = ref({
@@ -74,7 +73,7 @@ export default {
         data: [0,0,0],
       },
     ]);
-
+  console.log(props)
     return {chartOptions, series};
   },
 

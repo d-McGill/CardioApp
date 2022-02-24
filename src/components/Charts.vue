@@ -29,7 +29,7 @@
  {{scar}}
    
 <p v-once> {{sortDataG()}}</p>
-<graph/>
+<graph :graphData=graphData></graph>
 
 </template>
 <script>
@@ -42,7 +42,7 @@ export default {
   setup(){
 
     const graphData = reactive({      
-      data: [0,0,0,0],
+      data: [2,2,2,2],
     })
 
 
