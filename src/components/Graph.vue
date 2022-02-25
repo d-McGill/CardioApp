@@ -1,42 +1,41 @@
 <template>
-
     <apexchart
       ref="demoChart"
-      type="line"
-      height="350"
-      width="500"
+      height="500"
+      width="80%"
       :options="chartOptions"
       :series="series"
     ></apexchart>
-
 </template>
 <script>
 import { ref} from "vue";
 export default {
  name: "App",
  props: {
-     graphData: {
+     graphDataX: {
          type: Array,
+         required: true,
+     },
+      graphDataY: {
+         type: Array,
+         required: true,
+     },
+      graphChart: {
+         type: String,
          required: true,
      }
 
 },
   setup(props){
-
-  
-
-console.log()
-
-
-
     const chartOptions = ref({
       chart: {
-        height: 350,
-        type: "line",
+        height: 500,
+        type: props.graphChart,
         zoom: {
-          enabled: false,
+          enabled: true,
         },
       },
+      
       dataLabels: {
         enabled: false,
       },
@@ -54,14 +53,13 @@ console.log()
         },
       },
       xaxis: {
-        categories: props.graphData,
         title: {
-          text: "Month",
+          text: "People",
         },
       },
       yaxis: {
         title: {
-          text: "Desktops",
+          text: "Values",
         },
       },
       legend: {
@@ -75,8 +73,12 @@ console.log()
 
     const series = ref([
       {
-        name: "one",
-        data: props.graphData,
+        name: "Gene Data",
+        data: props.graphDataX,
+      },
+       {
+        name: "Cardio Data",
+        data: props.graphDataY,
       },
     ]);
   
