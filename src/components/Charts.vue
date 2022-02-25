@@ -70,6 +70,7 @@ const graphY = ref([])
 
 // ON CLICK FUNCTION TO CREATE GRAPH
   function createGraph(){
+    isVis.value = false;
     getGraphData()
   }
 
