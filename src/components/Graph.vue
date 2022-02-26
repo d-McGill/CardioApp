@@ -2,7 +2,7 @@
     <apexchart
       ref="demoChart"
       height="500"
-      width="80%"
+      width="100%"
       :options="chartOptions"
       :series="series"
     ></apexchart>
@@ -16,8 +16,16 @@ export default {
          type: Array,
          required: true,
      },
+      graphNameX: {
+         type: String,
+         required: true,
+     },
       graphDataY: {
          type: Array,
+         required: true,
+     },
+       graphNameY: {
+         type: String,
          required: true,
      },
       graphChart: {
@@ -43,7 +51,7 @@ export default {
         curve: "straight",
       },
       title: {
-        text: "Product Trends by Month",
+        text: "A graph showing the comparison between the " + props.graphNameX + " gene and " + props.graphNameY + " data.",
         align: "left",
       },
       grid: {
@@ -54,7 +62,7 @@ export default {
       },
       xaxis: {
         title: {
-          text: "People",
+          text: "Data Points",
         },
       },
       yaxis: {
@@ -73,11 +81,11 @@ export default {
 
     const series = ref([
       {
-        name: "Gene Data",
+        name: props.graphNameX,
         data: props.graphDataX,
       },
        {
-        name: "Cardio Data",
+        name: props.graphNameY,
         data: props.graphDataY,
       },
     ]);
