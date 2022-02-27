@@ -1,5 +1,5 @@
 <template>
-<div class="marginTB">
+<div>
     <h1>I want to learn about</h1>
     <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
     <el-tab-pane label="Cardiomypaty" name="first">
@@ -60,6 +60,5 @@ export default {
     font-weight: 900;
 
 }
-    
- .marginTB{ margin: 6% 0};
+
 </style>

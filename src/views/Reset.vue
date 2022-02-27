@@ -1,5 +1,5 @@
 <template>
-  <el-row class="marginTB">
+  <el-row>
     <el-col :span="8"></el-col>
     <el-col :span="8">
       <h1>Reset Password</h1>
@@ -46,7 +46,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
   .formWrapper{
     box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);
     padding: 2% 5%;
@@ -63,6 +63,12 @@ export default {
 .el-button  a{
   text-decoration: none;
   color:#fff;
+}
+
+.dark .formWrapper{
+    background-color: #15202B;
+    color: #fff;
+
 }
 
 .errorInfo{

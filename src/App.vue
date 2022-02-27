@@ -65,12 +65,6 @@ export default {
 
 }
 
-.dark footer{
-    background-color: #15202B;
-    color: #fff;
-
-}
-
 .dark footer a{
     color: #fff;
 }
@@ -106,28 +100,26 @@ export default {
     
 }
 
-
-
-/*
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.dark footer a:hover{
+    text-decoration: none;
+    font-weight: 900;
+    background-color: #fff;
+    color: #409eff !important;
+    padding:15px 50px;
+    border-radius: 8px;
+    
 }
 
-#nav {
-  padding: 30px;
+.el-empty__image {
+    margin-top: 3%;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+
+html{
+  background-color: #f3f3f3;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.dark html{
+  background-color: #192734;
 }
-*/
 </style>

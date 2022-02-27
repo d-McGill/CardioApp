@@ -1,5 +1,5 @@
 <template>
-  <el-row class="marginTB">
+  <el-row>
     <el-col :span="7">
     </el-col>
     <el-col :span="10">
@@ -149,15 +149,14 @@ export default {
   },
 };
 </script>
-<style> 
-  .marginTB{ margin: 2% 0};
+<style scoped> 
 
 
 h1{
   font-weight: 900;
 }
 </style>
-<style>
+<style scoped>
     .errorInfo{
       font-size: 14px !important;
       color: red;
@@ -174,6 +173,11 @@ h1{
     margin:5% 0;
   }
 
+.dark .formWrapper{
+    background-color: #15202B;
+    color: #fff;
+
+}
   .el-button {
   width:40%;
   font-size: 18pt;

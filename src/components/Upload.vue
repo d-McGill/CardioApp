@@ -124,6 +124,12 @@ function change(e){
   font-weight: 900;
   background-color: #eee;
   padding:5%;
+  box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);
+}
+
+.dark .fileTable{
+  background-color: #15202B;
+  padding:5%;
 }
 
 
@@ -132,9 +138,21 @@ function change(e){
   text-align: center;
   width: 100%;
   font-size: 20pt;
+  font-weight: 900;
+  border: 1px solid red;
+  color: #fff;
+  background-color: red;
+}
+
+.xButton:hover{
+  padding:5%;
+  text-align: center;
+  width: 100%;
+  font-size: 20pt;
+  font-weight: 900;
   border: 1px solid red;
   color: red;
-
+  background-color: #fff;
 }
 
 .inputfile {
@@ -183,11 +201,6 @@ function change(e){
         opacity: 0.3;
       }
 
-
-
-
-</style>
-<style>
 .el-upload {
     background-color: #409eff;
     border-radius: 4px;
@@ -218,6 +231,5 @@ function change(e){
     opacity: .75;
     color: var(--el-text-color-regular);
     font-size: 30pt; }
-
 
 </style>

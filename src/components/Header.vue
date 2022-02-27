@@ -86,6 +86,8 @@ header {
   box-shadow: 1px 1px 1px rgba(0.0,0.0,0.1);
   transition: background 0.3s ease-in-out;
   color: #f3f3f3;
+  margin-bottom: 2%;
+
 }
 .dark header {
   background: #15202B;

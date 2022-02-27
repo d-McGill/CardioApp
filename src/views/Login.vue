@@ -1,5 +1,5 @@
 <template>
-  <el-row class="marginTB">
+  <el-row>
     <el-col :span="8"></el-col>
     <el-col :span="8">
       <h1>Login</h1>
@@ -80,11 +80,7 @@ export default {
   },
 };
 </script>
-<style>
-.marginTB {
-  margin: 5% 0;
-}
-
+<style scoped>
   .el-button {
   width:40%;
   font-size: 18pt;
@@ -103,6 +99,11 @@ export default {
     margin:5% 0;
   }
 
+.dark .formWrapper{
+    background-color: #15202B;
+    color: #fff;
+
+}
 .errorInfo{
   background-color: #FF0000;
   color: #fff;

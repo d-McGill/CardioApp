@@ -53,7 +53,7 @@ export default {
 components: { Graph },
 name: "App",
   setup(){
-// FORM LOGIC - V_MODEL 
+// FORM LOGIC - V_MODEL x
   const dataTerm = reactive({
       x: 'Select Gene Data',
       y: 'Select Cardio Data',
@@ -237,7 +237,11 @@ const graphNameX = ref('')
 <style scoped>
 .vue-apexcharts {
     text-align: center;
-    padding: 5% 10%;}
+    margin: 5% 10%;
+    border-radius:9px;
+    padding:2%;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);}
 
 .el-select--large {
     line-height: 40px;
