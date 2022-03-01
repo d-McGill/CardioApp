@@ -64,7 +64,7 @@ export default {
         },
       },
       yaxis: {
-        title: props.graphDataY,
+        title: props.graphNameY,
       },
       legend: {
         position: "top",

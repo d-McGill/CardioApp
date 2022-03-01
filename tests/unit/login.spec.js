@@ -2,23 +2,18 @@ import { mount } from '@vue/test-utils'
 import Login from '@/views/Login.vue'
 
 describe('Login Logic Tests', () => {
-    it("reveals a notification when submitted", async () => {
+    it("Login Button Click Works", async () => {
         const wrapper = mount(Login)
+        const button = wrapper.find('#loginButton')
+        const erroMessage = wrapper.find('errorFirebase')
+        button.trigger('click');
+        expect(wrapper.emitted('login-clicked'))
+  })
 
-        const email = 'name@mail.com'
-        const password = 'pass'
-        const erroMessage = wrapper.find("errorFirebase")
 
-        await wrapper.find('input[type=email]').setValue(email)
-        await wrapper.find('input[type=password]').setValue(password)
 
-        await wrapper.find('form').trigger('submit.prevent')
-    
-        expect(wrapper.find("errorFirebase").text())
-          .toBe("")
 
-          expect(erroMessage.isVisible()).toBe(true)
-      })
+
 
 })
 

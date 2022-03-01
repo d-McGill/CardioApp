@@ -19,11 +19,7 @@
           <el-input v-model="password"  placeholder="Need to rest? Rest with the link below" show-password type="password"></el-input>
         </el-form-item>
       </div>
-
-
-
         <el-form-item>
-
           <el-button type="primary" style="margin: auto" @click="login" id="loginButton">
         Login
           </el-button>
