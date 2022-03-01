@@ -26,6 +26,26 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: () => import('../views/Dashboard.vue')
+  },
+  {
+    path: '/reset',
+    name: 'Reset',
+    component: () => import('../views/Reset.vue')
+  },
+  {
+    path: '/search',
+    name: 'QuerySearch',
+    component: () => import('../views/QuerySearch.vue')
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('../views/Profile.vue')
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: '404',
+    component: () => import('../views/404.vue')
   }
 ]
 
