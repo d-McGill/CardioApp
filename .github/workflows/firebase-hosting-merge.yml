@@ -18,3 +18,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CARDIOAPP_936F2 }}'
           channelId: live
           projectId: cardioapp-936f2
+          entryPoint: "./cardioApp" 
