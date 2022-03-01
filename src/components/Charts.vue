@@ -1,6 +1,7 @@
 <template>
 <el-row style="padding:0 15%;" >
   <el-col :span="12" >
+  <h1>TEST </h1>
     <h3>X - axis</h3>
   <!--    X DROP DOWN   -->
     <el-select v-model="dataTerm.x" class="m-2" placeholder="Select" size="large">
