@@ -8,7 +8,7 @@
 <el-row class="row-bg" justify="center">
     <el-col :span="1"></el-col>
     <el-col :span="12" class="">
-      <h1 class="title">Cardio App</h1>
+      <h1 class="title">Cardio Ap</h1>
       <p>An application that brings all relevant research cardiomyopathy data in one place.
          Analyse, contribute, and learn with our and external data sets.
          Create an account to get started or register in a few easy steps. In the meantime here are some definitions. </p>
