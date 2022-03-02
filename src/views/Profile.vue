@@ -1,11 +1,22 @@
 <template>
-      <el-button type="primary" @click="getUserData" style="margin: auto"
-        >Delete</el-button
-      >
-
-      <table>
+    <el-row class="marginTB">
+        <el-card class="box-card">
+          <label>Name: {{name}} </label> <br><br><br>
+            <label>Email: {{email}} </label> <br><br><br>
+            <label>Address: {{address}} </label> <br><br><br>
+            <label>Phone Number: {{phoneNumber}} </label> <br><br><br>
+            <label>Institute Name: {{institute}} </label> <br><br><br>
+            <el-button v-if="tableVis == 'false'" type="primary" @click="getUserData" style="margin: auto"
+              >View uploads</el-button
+            >
+            <el-button v-if="tableVis == 'true'" type="primary" @click="hideUserData" style="margin: auto"
+              >Hide uploads</el-button
+            >
+        </el-card>
+        </el-row>
+      <table v-if="tableVis == 'true'" class="tableContent">
         
-        <thead>
+        <thead> 
           <th>ledv</th>
           <th>redv</th>
           <th>lesv</th>
@@ -14,7 +25,6 @@
           <th>lesv</th>
           <th>rvef</th>
           <th>lvmass</th>
-
           <th>lsv</th>
           <th>rsv</th>
           <th>scar</th>
@@ -23,7 +33,6 @@
           <th>ApicalHCM</th>
           <th>SuddenCardiacDeath</th>
           <th>Hypertension</th>
-
           <th>Diabetes</th>
           <th>Myectomy</th>
           <th>MYH7</th>
@@ -32,11 +41,9 @@
           <th>ACTCmutation</th>
           <th>TPM1</th>
           <th>TNNCI</th>
-
           <th>TNNI3</th>
           <th>MYL2</th>
           <th>TTN</th>
-          
           <tr v-for="item in snapData" :key="item.document">
           <td>{{ item.ledv == undefined ? "N/A" : item.ledv }}</td>
           <td>{{ item.redv == undefined ? "N/A" : item.redv }}</td>
@@ -365,6 +372,7 @@ export default {
   },
   setup() {
     const isOpen = ref(false);
+    const tableVis = ref('false')
 
     const ledv = ref("");
     const redv = ref("");
@@ -399,11 +407,39 @@ export default {
     const user = ref(null);
     const snapData = ref([]);
     const documentId = ref();
+    const address = ref('');
+    const email = ref('');
+    const institute = ref('');
+    const phoneNumber = ref('');
+    const name = ref('');
+
+
+    firebaseAuthentication.onAuthStateChanged((currentUser) => {
+      if (currentUser) {
+        user.value = currentUser;
+        firebaseFireStore
+          .collection("users")
+          .doc(user.value.uid)
+          .get()
+          .then(function(snapshot) {
+            name.value = snapshot.data().name;
+            address.value = snapshot.data().address;
+            email.value = snapshot.data().email;
+            institute.value = snapshot.data().institute;
+            phoneNumber.value = snapshot.data().phoneNumber;
+          });
+          
+            
+      } 
+    });
+    
+
+
     function getUserData() {
-      
+      snapData.value = [];
+      tableVis.value = 'true';
       firebaseAuthentication.onAuthStateChanged((currentUser) => {
         if (currentUser) {
-          // console.log(currentUser);
           user.value = currentUser;
           firebaseFireStore
             .collection("testColl")
@@ -413,15 +449,18 @@ export default {
                 snapData.value.push({ document: doc.id, ...doc.data() });
               });
             });
-          //  console.log(snapData.value);
         }
       });
     }
 
+    function hideUserData() {
+      snapData.value = [];
+      tableVis.value = 'false';
+      console.log("hidden");
+    }
+
     function updateCollection(){
       snapData.value = [];
-     console.log("Inside update");
-     console.log(documentId.value);
 
       firebaseFireStore.collection("testColl").doc(documentId.value).update({
 
@@ -459,9 +498,6 @@ export default {
     function deleteCollection(){
       
      snapData.value = [];
-     console.log("Inside delete");
-     console.log(documentId.value);
-
       firebaseFireStore.collection("testColl").doc(documentId.value).delete({});
       
     }
@@ -471,7 +507,6 @@ export default {
       
       documentId.value = item.document;
 
-       console.log(documentId.value);
         (ledv.value = item.ledv),
         (redv.value = item.redv),
         (lesv.value = item.lesv),
@@ -498,9 +533,6 @@ export default {
         (TNNI3.value = item.TNNI3),
         (MYL2.value = item.MYL2),
         (TTN.value = item.TTN);
-
-
-
 
     };
 
@@ -536,8 +568,15 @@ export default {
       TNNCI,
       TNNI3,
       MYL2,
-      TTN
-      
+      TTN,
+      address,
+      email,
+      institute,
+      phoneNumber,
+      user,
+      name,
+      tableVis,
+      hideUserData
 
     };
   },
@@ -549,6 +588,30 @@ export default {
 table {
   width: 70%;
 }
+.marginTB {
+  margin: 5% 0;
+}
+
+.box-card{
+    box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);
+  /*  padding: 2% 5%; */
+    background-color:#eee;
+    border-radius: 8px;
+  /*  margin:5% 0; */
+    margin-left: 40%;
+    height: 30rem;
+  }
+
+
+
+.tableContent th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #B0B0B0;
+  color: white;
+}
+
 
 
 
