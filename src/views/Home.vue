@@ -15,8 +15,8 @@
       <FactsAPI />
       <p>Peaked your interest or have something to add? Get started here....</p>
       <br/>
-      <el-button v-if="!user" @click="$router.push('login')" type="primary">Login</el-button> 
-      <el-button v-if="!user" @click="$router.push('register')" type="primary">Register</el-button>
+      <el-button v-if="!user" @click="$router.push('login')" type="primary" class="loginButton">Login</el-button> 
+      <el-button v-if="!user" @click="$router.push('register')" type="primary" class="RegisterButton">Register</el-button>
       <el-button v-if="user" @click="logout, $router.push('login')" type="primary">Logout</el-button>
 </el-col>
 
