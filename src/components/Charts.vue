@@ -1,5 +1,6 @@
 <template>
 <el-row style="padding:0 15%;" >
+  <p>Test</p>
   <el-col :span="12" >
     <h3>X - axis</h3>
   <!--    X DROP DOWN   -->
