@@ -17,11 +17,11 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           start: npm run serve
-          wait-on: <http://localhost:8080/>
+          wait-on: 'http://localhost:8080/'
           config_file: cypress.json
           spec: "tests/e2e/**/*"
         env:
-          CYPRESS_baseUrl: <http://localhost:8080/>
+          CYPRESS_baseUrl: 'http://localhost:8080/'
   build_and_preview:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
