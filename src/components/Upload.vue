@@ -80,46 +80,49 @@ const submitUpload = (jsonC) => {
             TNNCI: obj.TNNCI,
             TNNI3: obj.TNNI3,
             MYL2: obj.MYL2,
-            TTN: obj.TTN
+            TTN: obj.TTN,
+            CreatedOn: timeStamp
 
 
              })
           }
+          else{
+              firebase.firestore().collection("HypertrophicCardio").add({
+              user: user.uid, 
+              ledv: obj.ledv,
+              redv: obj.redv,
+              lesv: obj.lesv,
+              resv: obj.resv,
+              lvef: obj.lvef,
+              rvef: obj.rvef,
+              lvmass: obj.lvmass,
+              lsv: obj.lsv,
+              rsv: obj.rsv,        
+              scar: obj.scar,
+              female: obj.female,
+              AgeatMRI: obj.AgeatMRI,
+              ApicalHCM: obj.ApicalHCM,
+              SuddenCardiacDeath: obj.SuddenCardiacDeath,
+              Hypertension: obj.Hypertension,
+              Diabetes: obj.Diabetes,
+              Myectomy: obj.Myectomy,
+              MYH7: obj.MYH7,
+              MYBPC3mutation: obj.MYBPC3mutation,
+              TNNT2mutation: obj.TNNT2mutation,
+              ACTCmutation: obj.ACTCmutation,
+              TPM1: obj.TPM1,
+              TNNCI: obj.TNNCI,
+              TNNI3: obj.TNNI3,
+              MYL2: obj.MYL2,
+              TTN: obj.TTN,
+              CreatedOn: timeStamp
 
-        firebase.firestore().collection("graphdata").add({
-        user: user.uid, 
-        ledv: obj.ledv,
-        redv: obj.redv,
-        lesv: obj.lesv,
-        resv: obj.resv,
-        lvef: obj.lvef,
-        rvef: obj.rvef,
-        lvmass: obj.lvmass,
-        lsv: obj.lsv,
-        rsv: obj.rsv,        
-        scar: obj.scar,
-        female: obj.female,
-        AgeatMRI: obj.AgeatMRI,
-        ApicalHCM: obj.ApicalHCM,
-        SuddenCardiacDeath: obj.SuddenCardiacDeath,
-        Hypertension: obj.Hypertension,
-        Diabetes: obj.Diabetes,
-        Myectomy: obj.Myectomy,
-        MYH7: obj.MYH7,
-        MYBPC3mutation: obj.MYBPC3mutation,
-        TNNT2mutation: obj.TNNT2mutation,
-        ACTCmutation: obj.ACTCmutation,
-        TPM1: obj.TPM1,
-        TNNCI: obj.TNNCI,
-        TNNI3: obj.TNNI3,
-        MYL2: obj.MYL2,
-        TTN: obj.TTN,
-        CreatedOn: timeStamp
+            })
+          }
 
-  })
+
 }
 
-       console.log(jsonC.value)
 }
 
 
@@ -128,7 +131,6 @@ const cancelUpload = () =>{
 }
 
 function change(e){
-      console.log(selectDD.value);
       const file = e.target.files[0];
       const reader = new FileReader();
       if (file.name.includes(".json")) {

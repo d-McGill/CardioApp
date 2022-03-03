@@ -442,7 +442,7 @@ export default {
         if (currentUser) {
           user.value = currentUser;
           firebaseFireStore
-            .collection("testColl")
+            .collection("HypertrophicCardio")
             .where("user", "==", currentUser.uid)
             .onSnapshot((snapShot) => {
               snapShot.forEach((doc) => {
@@ -462,7 +462,7 @@ export default {
     function updateCollection(){
       snapData.value = [];
 
-      firebaseFireStore.collection("testColl").doc(documentId.value).update({
+      firebaseFireStore.collection("HypertrophicCardio").doc(documentId.value).update({
 
         ledv: ledv.value,
         redv: redv.value,
@@ -498,7 +498,7 @@ export default {
     function deleteCollection(){
       
      snapData.value = [];
-      firebaseFireStore.collection("testColl").doc(documentId.value).delete({});
+      firebaseFireStore.collection("HypertrophicCardio").doc(documentId.value).delete({});
       
     }
 
@@ -599,7 +599,7 @@ export default {
 
 table, th, td {
   border: 1px solid;
-  margin-left: 10%;
+  margin-left: 2%;
 }
 
 .tableContent th {
