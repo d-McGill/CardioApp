@@ -2,7 +2,7 @@
 
 <div>
 <el-aside>
-  
+   <RssFeed />
 </el-aside>
 <el-main>
 <el-row class="row-bg" justify="center">
@@ -21,6 +21,7 @@
 </el-col>
 
     <el-col :span="1"></el-col>
+   
   </el-row>
 </el-main>
 </div>
@@ -28,6 +29,7 @@
 <script>
 
 import FactsAPI from '../components/FactsAPI.vue';
+import RssFeed from '../components/RssFeed.vue';
 import { ref } from "vue";
 import { firebaseAuthentication } from "@/firebase/database";
 export default {
@@ -65,7 +67,8 @@ export default {
   },
 
   components: {
-    FactsAPI
+    FactsAPI,
+    RssFeed
 
   }
 };
