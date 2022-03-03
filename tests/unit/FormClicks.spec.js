@@ -1,6 +1,6 @@
 import Login from '@/views/Login.vue';
-import Register from '@/views/register.vue';
-import Charts from '@/components/charts.vue';
+import Register from '@/views/Register.vue';
+import Charts from '@/components/Charts.vue';
 import { mount } from '@/vue/test-utils';
 
 describe('Form Emmits && Clicks', () => {
