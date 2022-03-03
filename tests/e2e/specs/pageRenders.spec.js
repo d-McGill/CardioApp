@@ -21,7 +21,6 @@ describe('All User Pages Render with correct content and URL', () => {
   
   it('Visits profile page', () => {
     cy.visit('/profile')
-    cy.contains('h1', 'Profile')
     cy.url().should('be.equal', `http://localhost:8080/profile`)
   })
 
