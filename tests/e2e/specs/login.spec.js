@@ -15,7 +15,7 @@
     it('Forget password link', () => {
         cy.visit('/login')
         cy.get('.forgetPassword').click()
-        cy.url().should('be.equal', `${Cypress.config("baseUrl")}/reset`)
+        cy.url().should('be.equal', `${Cypress.config("baseUrl")}reset`)
         cy.contains('h1', 'Reset Password')
       })
 
