@@ -22,7 +22,6 @@
           <th>lesv</th>
           <th>resv</th>
           <th>lvef</th>
-          <th>lesv</th>
           <th>rvef</th>
           <th>lvmass</th>
           <th>lsv</th>
@@ -44,6 +43,7 @@
           <th>TNNI3</th>
           <th>MYL2</th>
           <th>TTN</th>
+          <th>Created on</th>
           <tr v-for="item in snapData" :key="item.document">
           <td>{{ item.ledv == undefined ? "N/A" : item.ledv }}</td>
           <td>{{ item.redv == undefined ? "N/A" : item.redv }}</td>
@@ -62,8 +62,6 @@
           <td>{{item.Hypertension == undefined ? "N/A" : item.Hypertension}}</td>
           <td>{{item.Diabetes == undefined ? "N/A" : item.Diabetes}}</td>
           <td>{{item.Myectomy == undefined ? "N/A" : item.Myectomy}}</td>
-          <td>{{item.Diabetes == undefined ? "N/A" : item.Diabetes}}</td>
-          <td>{{item.Myectomy == undefined ? "N/A" : item.Myectomy}}</td>
           <td>{{item.MYH7 == undefined ? "N/A" : item.MYH7}}</td>
           <td>{{item.MYBPC3mutation == undefined ? "N/A" : item.MYBPC3mutation}}</td>
           <td>{{item.TNNT2mutation == undefined ? "N/A" : item.TNNT2mutation}}</td>
@@ -73,6 +71,8 @@
           <td>{{item.TNNI3 == undefined ? "N/A" : item.TNNI3}}</td>
           <td>{{item.MYL2 == undefined ? "N/A" : item.MYL2}}</td>
           <td>{{item.TTN == undefined ? "N/A" : item.TTN}}</td>
+          <td>{{item.CreatedOn == undefined ? "N/A" : item.CreatedOn}}</td>
+
 
         <el-button
           type="primary"
@@ -576,8 +576,7 @@ export default {
       user,
       name,
       tableVis,
-      hideUserData
-
+      hideUserData,
     };
   },
 };
@@ -585,31 +584,31 @@ export default {
 
 <style>
 
-table {
-  width: 70%;
-}
+
 .marginTB {
-  margin: 5% 0;
+  margin: 2% 0;
 }
 
 .box-card{
     box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);
-  /*  padding: 2% 5%; */
-    background-color:#eee;
+    background-color:#eee; 
     border-radius: 8px;
-  /*  margin:5% 0; */
     margin-left: 40%;
-    height: 30rem;
+   /* height: 30rem; */
   }
 
-
+table, th, td {
+  border: 1px solid;
+  margin-left: 10%;
+}
 
 .tableContent th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #B0B0B0;
-  color: white;
+  /*background-color: #eee; */
+  
+  
 }
 
 
