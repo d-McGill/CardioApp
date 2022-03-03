@@ -1,7 +1,7 @@
-import { mount } from '@/vue/test-utils'
 import Login from '@/views/Login.vue'
 import Register from '@/views/register.vue'
 import Charts from '@/components/charts.vue'
+import { mount } from '@/vue/test-utils'
 
 describe('Form Emmits && Clicks', () => {
     it("Login button", async () => {
