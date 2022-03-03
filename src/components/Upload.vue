@@ -51,8 +51,6 @@ const submitUpload = (jsonC) => {
   for(var i = 0; i < jsonC.length; i++) {
         var obj = jsonC[i];
 
-        firebase.firestore().collection("testColl").add({
-
         if(selectDD.value != null)
         {
           firebase.firestore().collection(selectDD.value).add({
@@ -87,8 +85,6 @@ const submitUpload = (jsonC) => {
 
              })
           }
-
-        
 
         firebase.firestore().collection("graphdata").add({
         user: user.uid, 
