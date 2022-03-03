@@ -11,17 +11,17 @@ describe('Home Page Button tests', () => {
   it('Login Button Destination', () => {
     cy.visit('/')
     cy.get('.loginButton').click()
-    cy.url().should('be.equal', `${Cypress.config("baseUrl")}login`)
+    cy.url().should('be.equal', `${Cypress.config("baseUrl")}/login`)
   })
   it('Register Button Destination', () => {
     cy.visit('/')
     cy.get('.RegisterButton').click()
-    cy.url().should('be.equal', `${Cypress.config("baseUrl")}register`)
+    cy.url().should('be.equal', `${Cypress.config("baseUrl")}/register`)
   })
   it('Help Button Destination', () => {
     cy.visit('/')
     cy.get('.helpButton').click()
-    cy.url().should('be.equal', `${Cypress.config("baseUrl")}help`)
+    cy.url().should('be.equal', `${Cypress.config("baseUrl")}/help`)
   })
   it('Dark Mode', () => {
     cy.visit('/')
