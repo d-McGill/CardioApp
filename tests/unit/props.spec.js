@@ -1,5 +1,5 @@
-import Graph from '@/components/Graph.vue'
-import Header from '@/components/Header.vue'
+import Graph from '@/components/Graph.vue';
+import Header from '@/components/Header.vue';
 import { shallowMount } from '@vue/test-utils';
 
 describe('Testing Graph Component props', () => {
