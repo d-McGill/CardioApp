@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { mount } from '@/vue/test-utils'
 import Login from '@/views/Login.vue'
 import Register from '@/views/register.vue'
 import Charts from '@/components/charts.vue'
