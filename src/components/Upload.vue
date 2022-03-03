@@ -46,9 +46,12 @@ const handleBefore = (file)=>{
 const submitUpload = (jsonC) => {
  
  var user = firebase.auth().currentUser;
-
+ var timeStamp = Date().toString();
+ console.log(timeStamp);
   for(var i = 0; i < jsonC.length; i++) {
         var obj = jsonC[i];
+
+        firebase.firestore().collection("testColl").add({
 
         if(selectDD.value != null)
         {
@@ -114,8 +117,8 @@ const submitUpload = (jsonC) => {
         TNNCI: obj.TNNCI,
         TNNI3: obj.TNNI3,
         MYL2: obj.MYL2,
-        TTN: obj.TTN
-
+        TTN: obj.TTN,
+        CreatedOn: timeStamp
 
   })
 }
