@@ -60,13 +60,11 @@ export default {
       },
       xaxis: {
         title: {
-          text: "Data Points",
+          text: props.grapNameX,
         },
       },
       yaxis: {
-        title: {
-          text: "Values",
-        },
+        title: props.graphNameY,
       },
       legend: {
         position: "top",
