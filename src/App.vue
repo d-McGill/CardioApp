@@ -44,7 +44,7 @@ export default {
 .app {
   width: 100vw;
   min-height: 100vh;
-  background: white;
+  background: #eee;
   color: #2c3e50;
   transition: background 0.3s ease-in-out;
   font-family: Avenir, Helvetica, Arial, sans-serif; 
@@ -72,6 +72,14 @@ export default {
 .dark a{
     color: #fff;
 
+}
+
+.dark .vue-modal-content {
+    background-color: #15202B;
+}
+
+.dark .vue-modal{
+    background: #15202B;
 }
 
 .dark #tab-second {
@@ -113,7 +121,11 @@ export default {
 .el-empty__image {
     margin-top: 3%;
 }
-
+.vue-modal-content {
+    background-color: #eee;  
+    border: none;
+    min-height: 100vh;
+}
 
 html{
   background-color: #f3f3f3;

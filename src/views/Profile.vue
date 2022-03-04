@@ -1,29 +1,24 @@
 <template>
-    <el-row class="marginTB">
-        <el-card class="box-card">
-          <label>Name: {{name}} </label> <br><br><br>
-            <label>Email: {{email}} </label> <br><br><br>
-            <label>Address: {{address}} </label> <br><br><br>
-            <label>Phone Number: {{phoneNumber}} </label> <br><br><br>
-            <label>Institute Name: {{institute}} </label> <br><br><br>
-
-            <el-button
-              type="primary"
-              @click="(isOpen = true), editUserAccount()"
-              style="margin: auto"
-              >Edit profile</el-button
-            >
-            <el-button v-if="tableVis == 'false'" type="primary" @click="getUserData" style="margin: auto"
-              >View uploads</el-button
-            >
-            <el-button v-if="tableVis == 'true'" type="primary" @click="hideUserData" style="margin: auto"
-              >Hide uploads</el-button
-            >
-        </el-card>
-        </el-row>
+    <el-row>
+      <el-col :span="8">
+        <div class="wrapper">
+        <ul>
+          <li><strong>Name:</strong> {{name}}</li>
+          <li><strong>Address:</strong> {{address}} </li>
+          <li><strong>Phone Number:</strong> {{phoneNumber}}</li>
+          <li><strong>Institute Name:</strong> {{institute}} </li>
+          </ul>
+            <el-button type="warning" @click="(isOpen = true), editUserAccount()">Edit profile</el-button>
+            <el-button v-if="tableVis == 'false'" type="primary" @click="getUserData" style="margin-right:2%">View uploads</el-button>
+            <el-button v-if="tableVis == 'true'" type="primary" @click="hideUserData" style="margin-right:2%">Hide uploads</el-button>
+        </div>
+        </el-col>
+        <el-col :span="16">
+      
+      <div class="tableWrapper">
       <table v-if="tableVis == 'true'" class="tableContent">
-        
-        <thead> 
+        <thead>
+          <th>Action</th>
           <th>ledv</th>
           <th>redv</th>
           <th>lesv</th>
@@ -52,47 +47,43 @@
           <th>TTN</th>
           <th>Created on</th>
           <tr v-for="item in snapData" :key="item.document">
-          <td>{{ item.ledv == undefined ? "N/A" : item.ledv }}</td>
-          <td>{{ item.redv == undefined ? "N/A" : item.redv }}</td>
-          <td>{{ item.lesv == undefined ? "N/A" : item.lesv }}</td>
-          <td>{{ item.resv == undefined ? "N/A" : item.resv }}</td>
-          <td>{{ item.lvef == undefined ? "N/A" : item.lvef }}</td>
-          <td>{{item.rvef == undefined ? "N/A" : item.rvef}}</td>
-          <td>{{item.lvmass == undefined ? "N/A" : item.lvmass}}</td>
-          <td>{{item.lsv == undefined ? "N/A" : item.lsv}}</td>
-          <td>{{item.rsv == undefined ? "N/A" : item.rsv}}</td>
-          <td>{{item.scar == undefined ? "N/A" : item.scar}}</td>
-          <td>{{item.female == undefined ? "N/A" : item.female}}</td>
-          <td>{{item.AgeatMRI == undefined ? "N/A" : item.AgeatMRI}}</td>
-          <td>{{item.ApicalHCM == undefined ? "N/A" : item.ApicalHCM}}</td>
-          <td>{{item.SuddenCardiacDeath == undefined ? "N/A" : item.SuddenCardiacDeath}}</td>
-          <td>{{item.Hypertension == undefined ? "N/A" : item.Hypertension}}</td>
-          <td>{{item.Diabetes == undefined ? "N/A" : item.Diabetes}}</td>
-          <td>{{item.Myectomy == undefined ? "N/A" : item.Myectomy}}</td>
-          <td>{{item.MYH7 == undefined ? "N/A" : item.MYH7}}</td>
-          <td>{{item.MYBPC3mutation == undefined ? "N/A" : item.MYBPC3mutation}}</td>
-          <td>{{item.TNNT2mutation == undefined ? "N/A" : item.TNNT2mutation}}</td>
-          <td>{{item.ACTCmutation == undefined ? "N/A" : item.ACTCmutation}}</td>
-          <td>{{item.TPM1 == undefined ? "N/A" : item.TPM1}}</td>
-          <td>{{item.TNNCI == undefined ? "N/A" : item.TNNCI}}</td>
-          <td>{{item.TNNI3 == undefined ? "N/A" : item.TNNI3}}</td>
-          <td>{{item.MYL2 == undefined ? "N/A" : item.MYL2}}</td>
-          <td>{{item.TTN == undefined ? "N/A" : item.TTN}}</td>
-          <td>{{item.CreatedOn == undefined ? "N/A" : item.CreatedOn}}</td>
-
-
-        <el-button
-          type="primary"
-          @click="(isOpen = true), populateModal(item)"
-          style="margin: auto"
-          >Update</el-button
-        >
+            <el-button type="warning" @click="(isOpen = true), populateModal(item)">Edit</el-button>
+            <td style="height:20px; overflow:hidden">{{ item.ledv == undefined ? "N/A" : item.ledv }}</td>
+            <td>{{ item.redv == undefined ? "N/A" : item.redv }}</td>
+            <td>{{ item.lesv == undefined ? "N/A" : item.lesv }}</td>
+            <td>{{ item.resv == undefined ? "N/A" : item.resv }}</td>
+            <td>{{ item.lvef == undefined ? "N/A" : item.lvef }}</td>
+            <td>{{item.rvef == undefined ? "N/A" : item.rvef}}</td>
+            <td>{{item.lvmass == undefined ? "N/A" : item.lvmass}}</td>
+            <td>{{item.lsv == undefined ? "N/A" : item.lsv}}</td>
+            <td>{{item.rsv == undefined ? "N/A" : item.rsv}}</td>
+            <td>{{item.scar == undefined ? "N/A" : item.scar}}</td>
+            <td>{{item.female == undefined ? "N/A" : item.female}}</td>
+            <td>{{item.AgeatMRI == undefined ? "N/A" : item.AgeatMRI}}</td>
+            <td>{{item.ApicalHCM == undefined ? "N/A" : item.ApicalHCM}}</td>
+            <td>{{item.SuddenCardiacDeath == undefined ? "N/A" : item.SuddenCardiacDeath}}</td>
+            <td>{{item.Hypertension == undefined ? "N/A" : item.Hypertension}}</td>
+            <td>{{item.Diabetes == undefined ? "N/A" : item.Diabetes}}</td>
+            <td>{{item.Myectomy == undefined ? "N/A" : item.Myectomy}}</td>
+            <td>{{item.MYH7 == undefined ? "N/A" : item.MYH7}}</td>
+            <td>{{item.MYBPC3mutation == undefined ? "N/A" : item.MYBPC3mutation}}</td>
+            <td>{{item.TNNT2mutation == undefined ? "N/A" : item.TNNT2mutation}}</td>
+            <td>{{item.ACTCmutation == undefined ? "N/A" : item.ACTCmutation}}</td>
+            <td>{{item.TPM1 == undefined ? "N/A" : item.TPM1}}</td>
+            <td>{{item.TNNCI == undefined ? "N/A" : item.TNNCI}}</td>
+            <td>{{item.TNNI3 == undefined ? "N/A" : item.TNNI3}}</td>
+            <td>{{item.MYL2 == undefined ? "N/A" : item.MYL2}}</td>
+            <td>{{item.TTN == undefined ? "N/A" : item.TTN}}</td>
+            <td>{{item.CreatedOn == undefined ? "N/A" : item.CreatedOn}}</td>
           </tr>
 
         </thead>
         
 
       </table>
+      </div>
+        </el-col>
+        </el-row>
        <Modal :open="isOpen" @close="isOpen = !isOpen">
           <el-form class="updateForm" v-if="userData == 'false'">
 
@@ -351,19 +342,19 @@
 
             <el-form-item>
               <el-button
-                type="primary"
+                type="warning"
                 style="margin: auto"
                 @click="updateCollection()"
-                >Updaye to collection</el-button
+                >Update collection</el-button
               >
             </el-form-item>
 
             <el-form-item>
               <el-button
-                type="primary"
+                type="danger"
                 style="margin: auto"
                 @click="deleteCollection()"
-                >Delete</el-button
+                >Delete collection</el-button
               >
             </el-form-item>
           </el-form>
@@ -412,7 +403,7 @@
 
             <el-form-item>
               <el-button
-                type="primary"
+                type="warning"
                 style="margin: auto"
                 @click="updateUserAccount()"
                 >Update User</el-button
@@ -421,7 +412,7 @@
 
             <el-form-item>
               <el-button
-                type="primary"
+                type="danger"
                 style="margin: auto"
                 @click="deleteUserAccount()"
                 >Delete User</el-button
@@ -734,37 +725,76 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
-
-.marginTB {
-  margin: 2% 0;
+.wrapper {
+background: #eee; 
+box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);
+border-radius: 8px;
+margin:5%;
+padding:2% 5% 5% 5%;
+}
+.tableWrapper{
+  width:90%;
+  overflow: scroll;
+  height:600px;
+  background: #eee; 
+  box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);
+  border-radius: 8px;
+  padding:10px;
 }
 
-.box-card{
-    box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);
-    background-color:#eee; 
-    border-radius: 8px;
-    margin-left: 40%;
-   /* height: 30rem; */
-  }
+.dark .tableWrapper{
+  background-color: #15202B;
+}
+
+.dark .wrapper{
+  background-color: #15202B;
+}
 
 table, th, td {
-  border: 1px solid;
-  margin-left: 2%;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
 }
 
-.tableContent th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  /*background-color: #eee; */
-  
-  
+th {
+  background-color: #409eff;
+  color:#fff
 }
 
+td {
+ width: 40px;
+ overflow: scroll;
+ white-space: nowrap;
+ padding: 5px !important;
+}
 
+ul {
+    text-align: left;
+    padding: 5%;
+    font-size: 15pt;
+    text-decoration: none;
+    list-style: none;
+}
 
+.vue-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 34%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1;
+    box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);
+    background: #eee; 
+}
+
+.vue-modal-content {
+    background-color: #eee;  
+    border: none;
+    min-height: 100vh;
+}
 
 label {
   font-weight: 900;
