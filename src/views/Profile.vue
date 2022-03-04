@@ -15,8 +15,8 @@
         </el-col>
         <el-col :span="16">
       
-      <div class="tableWrapper">
-      <table v-if="tableVis == 'true'" class="tableContent">
+      <div v-if="tableVis == 'true'" class="tableWrapper">
+      <table class="tableContent">
         <thead>
           <th>Action</th>
           <th>ledv</th>
@@ -421,13 +421,13 @@
               <div v-if="confirmDeletion == 'true'">
                 <label>Are you sure</label>
               <el-button
-                type="primary"
+                type="danger"
                 style="margin: auto"
                 @click="confirmAccountDelete()"
                 >Yes</el-button
               >
               <el-button
-                type="primary"
+                type="warning"
                 style="margin: auto"
                 @click="cancelAccountDelete()"
                 >No</el-button

@@ -1,7 +1,7 @@
 <template>
 
 <div>
-
+<h1 v-if="name"> Welcome {{name}} </h1>
 <el-main>
 <el-row class="row-bg" justify="center">
     <el-col :span="1"></el-col>
@@ -15,7 +15,6 @@
       <br/>
       <el-button v-if="!user" @click="$router.push('login')" type="primary">Login</el-button> 
       <el-button v-if="!user" @click="$router.push('register')" type="primary">Register</el-button>
-      <el-button v-if="user" @click="logout, $router.push('login')" type="primary">Logout</el-button>
 </el-col>
 
     <el-col :span="1"></el-col>
@@ -35,9 +34,12 @@ export default {
       data () {
 
       const user = ref(null);
+      const name = ref('');
       firebaseAuthentication.onAuthStateChanged(currentUser =>{
         if(currentUser) {
           user.value = currentUser.email;
+          name.value = currentUser.displayName;
+          console.log(currentUser);
           this.log = firebaseAuthentication.currentUser || true;
           this.sign = firebaseAuthentication.currentUser || false;
         } else {
@@ -45,27 +47,15 @@ export default {
         }
       });
       
-      function logout() {
 
-      firebaseAuthentication.signOut().then(
-        () => {
-          user.value = null;
-          this.$router.replace("/login");
-        },
-        error => {
-          error.value = error.message;
-        }
-      );
-    }
     return {
       user,
-      logout,
+      name
     };
   },
 
   components: {
     RssFeed
-
   }
 };
 

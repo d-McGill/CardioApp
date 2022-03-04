@@ -7,9 +7,10 @@
     <label for="file">Choose a file</label>
     <el-button class="ml-3" type="success" @click="submitUpload(jsonC)">Upload Data</el-button>
      <div v-if="content">
-       <table class="fileTable">
+       <table class="fileTable" v-if="watcher == 'true'">
          <tr>
-           <td style="width:50%">{{fileName}}</td>
+           <td v-if="watcherSubmit == 'false'" style="width:50%">{{fileName}}</td>
+           <td v-if="watcherSubmit == 'true'" style="width:50%">Uploaded!</td>
            <td><button @click="cancelUpload" class="xButton">X</button></td>
          </tr>
           </table>
@@ -30,6 +31,8 @@ const content = ref();
 const fileName = ref();
 const jsonC = ref(); 
 const selectDD = ref();
+const watcher = ref('');
+const watcherSubmit = ref('');
 
 const handleExceed = (files) => {
   upload.value.clearFiles()
@@ -122,15 +125,19 @@ const submitUpload = (jsonC) => {
 
 
 }
-
+watcherSubmit.value = 'true';
 }
 
 
 const cancelUpload = () =>{
   fileName.value = "";
+  watcher.value = 'false';
 }
 
 function change(e){
+      fileName.value = "";
+      watcher.value = 'true';
+      watcherSubmit.value = 'false';
       const file = e.target.files[0];
       const reader = new FileReader();
       if (file.name.includes(".json")) {
@@ -154,7 +161,7 @@ function change(e){
 }
 
 
-  return {handleExceed, submitUpload, upload, handleBefore, change, content,cancelUpload, fileName, jsonC, selectDD}
+  return {handleExceed, submitUpload, upload, handleBefore, change, content,cancelUpload, fileName, jsonC, selectDD, watcher, watcherSubmit}
     },
 }
 </script>
