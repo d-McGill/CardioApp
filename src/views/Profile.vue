@@ -6,6 +6,13 @@
             <label>Address: {{address}} </label> <br><br><br>
             <label>Phone Number: {{phoneNumber}} </label> <br><br><br>
             <label>Institute Name: {{institute}} </label> <br><br><br>
+
+            <el-button
+              type="primary"
+              @click="(isOpen = true), editUserAccount()"
+              style="margin: auto"
+              >Edit profile</el-button
+            >
             <el-button v-if="tableVis == 'false'" type="primary" @click="getUserData" style="margin: auto"
               >View uploads</el-button
             >
@@ -87,7 +94,7 @@
 
       </table>
        <Modal :open="isOpen" @close="isOpen = !isOpen">
-          <el-form class="updateForm">
+          <el-form class="updateForm" v-if="userData == 'false'">
 
             <el-form-item>
               <label>ledv</label>
@@ -360,19 +367,98 @@
               >
             </el-form-item>
           </el-form>
+
+          <el-form class="updateUser" v-if="userData == 'true'">
+
+            <el-form-item>
+              <label>Name</label>
+              <el-input
+                type="text"
+                required
+                autocomplete="off"
+                v-model="name"
+              ></el-input>
+            </el-form-item>
+
+            <el-form-item>
+              <label>Address</label>
+              <el-input
+                type="text"
+                required
+                autocomplete="off"
+                v-model="address"
+              ></el-input>
+            </el-form-item>
+
+            <el-form-item>
+              <label>Phone Number</label>
+              <el-input
+                type="text"
+                required
+                autocomplete="off"
+                v-model="phoneNumber"
+              ></el-input>
+            </el-form-item>
+
+            <el-form-item>
+              <label>Institute</label>
+              <el-input
+                type="text"
+                required
+                autocomplete="off"
+                v-model="institute"
+              ></el-input>
+            </el-form-item>
+
+            <el-form-item>
+              <el-button
+                type="primary"
+                style="margin: auto"
+                @click="updateUserAccount()"
+                >Update User</el-button
+              >
+            </el-form-item>
+
+            <el-form-item>
+              <el-button
+                type="primary"
+                style="margin: auto"
+                @click="deleteUserAccount()"
+                >Delete User</el-button
+              >
+            </el-form-item>
+              <div v-if="confirmDeletion == 'true'">
+                <label>Are you sure</label>
+              <el-button
+                type="primary"
+                style="margin: auto"
+                @click="confirmAccountDelete()"
+                >Yes</el-button
+              >
+              <el-button
+                type="primary"
+                style="margin: auto"
+                @click="cancelAccountDelete()"
+                >No</el-button
+              >
+              </div>
+          </el-form>
         </Modal>
 </template>
 <script>
 import Modal from "../components/Modal.vue";
 import { ref } from "vue";
 import { firebaseFireStore, firebaseAuthentication } from "@/firebase/database";
+//import firebase from "firebase/app";
 export default {
   components: {
     Modal,
   },
   setup() {
     const isOpen = ref(false);
-    const tableVis = ref('false')
+    const tableVis = ref('false');
+    const userData = ref('false');
+    const confirmDeletion = ref('false');
 
     const ledv = ref("");
     const redv = ref("");
@@ -461,7 +547,7 @@ export default {
 
     function updateCollection(){
       snapData.value = [];
-
+      isOpen.value = false;
       firebaseFireStore.collection("HypertrophicCardio").doc(documentId.value).update({
 
         ledv: ledv.value,
@@ -493,17 +579,20 @@ export default {
         
       });
       
+      
     }
 
     function deleteCollection(){
       
      snapData.value = [];
       firebaseFireStore.collection("HypertrophicCardio").doc(documentId.value).delete({});
+      isOpen.value = false;
       
     }
 
 
     const populateModal = (item) => {
+      userData.value = 'false';
       
       documentId.value = item.document;
 
@@ -535,6 +624,61 @@ export default {
         (TTN.value = item.TTN);
 
     };
+
+    function editUserAccount(){
+      userData.value = 'true';
+
+    }
+
+    function updateUserAccount(){
+        isOpen.value = false;
+        firebaseFireStore.collection("users").doc(user.value.uid).update({
+
+        name: name.value,
+        address: address.value,
+        phoneNumber: phoneNumber.value,
+        institute: institute.value    
+        
+      });
+
+    }
+
+    function deleteUserAccount(){
+      
+      confirmDeletion.value = 'true';
+
+
+    }
+
+    function cancelAccountDelete(){
+
+      confirmDeletion.value = 'false';
+
+    }
+
+    function confirmAccountDelete(){
+
+
+        firebaseAuthentication.onAuthStateChanged((currentUser) => {
+        if (currentUser) {
+          user.value = currentUser;
+          currentUser.delete()
+          .then(function(){
+          firebaseFireStore.collection("users").doc(user.value.uid).delete({
+            
+          });
+            isOpen.value = false;
+          })
+
+        }
+
+
+      });
+
+
+    }
+
+    
 
     return {
       getUserData,
@@ -577,6 +721,14 @@ export default {
       name,
       tableVis,
       hideUserData,
+      editUserAccount,
+      userData,
+      updateUserAccount,
+      deleteUserAccount,
+      confirmAccountDelete,
+      cancelAccountDelete,
+      confirmDeletion
+
     };
   },
 };
