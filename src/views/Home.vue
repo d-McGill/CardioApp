@@ -1,9 +1,7 @@
 <template>
 
 <div>
-<el-aside>
-  
-</el-aside>
+
 <el-main>
 <el-row class="row-bg" justify="center">
     <el-col :span="1"></el-col>
@@ -12,7 +10,7 @@
       <p>An application that brings all relevant research cardiomyopathy data in one place.
          Analyse, contribute, and learn with our and external data sets.
          Create an account to get started or register in a few easy steps. In the meantime here are some definitions. </p>
-      <FactsAPI />
+      <RssFeed />
       <p>Peaked your interest or have something to add? Get started here....</p>
       <br/>
       <el-button v-if="!user" @click="$router.push('login')" type="primary">Login</el-button> 
@@ -21,13 +19,14 @@
 </el-col>
 
     <el-col :span="1"></el-col>
+   
   </el-row>
 </el-main>
 </div>
 </template>
 <script>
 
-import FactsAPI from '../components/FactsAPI.vue';
+import RssFeed from '../components/RssFeed.vue';
 import { ref } from "vue";
 import { firebaseAuthentication } from "@/firebase/database";
 export default {
@@ -65,7 +64,7 @@ export default {
   },
 
   components: {
-    FactsAPI
+    RssFeed
 
   }
 };
