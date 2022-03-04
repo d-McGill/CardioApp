@@ -11,7 +11,7 @@
         </el-form-item>
         </div>
     <el-form-item>
-      <el-button type="primary" style="margin: auto" @click="resetPass">Reset</el-button>
+      <el-button type="primary" style="margin: auto" @click="resetPass" class="resetPassword">Reset</el-button>
     </el-form-item>
       </el-form>
     </el-col>

@@ -27,7 +27,7 @@
           <el-button type="primary" @click="submitForm(loginForm)"
             >Login</el-button
           > -->
-          <router-link to="/reset">Forgot password?</router-link>
+          <router-link to="/reset" class="forgetPassword">Forgot password?</router-link>
         </el-form-item>
 
       </el-form>
