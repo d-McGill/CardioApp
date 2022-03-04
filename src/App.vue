@@ -44,7 +44,7 @@ export default {
 .app {
   width: 100vw;
   min-height: 100vh;
-  background: #f3f3f3;
+  background: white;
   color: #2c3e50;
   transition: background 0.3s ease-in-out;
   font-family: Avenir, Helvetica, Arial, sans-serif; 
