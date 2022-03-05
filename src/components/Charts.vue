@@ -1,7 +1,7 @@
 <template>
 <el-row style="padding:0 15%;" >
   <el-col :span="12" >
-    <h3>X - axis</h3>
+    <h3>Green Plot</h3>
   <!--    X DROP DOWN   -->
     <el-select v-model="dataTerm.x" class="m-2" placeholder="Select" size="large">
        <el-option value="No Gene Data" selected>No Gene Data</el-option>
@@ -16,7 +16,7 @@
     </el-select>
  <!--  Y DROP DOWN   -->
     <el-select  v-model="dataTerm.y" class="m-2" placeholder="Select" size="large">
-      <el-option value="No Cardio Data" selected>No Cardio Data</el-option>
+      <el-option value="No Heart Section" selected>No Heart Section</el-option>
       <el-option value="ledv" >ledv</el-option>
       <el-option value="lesv" >lesv</el-option>
       <el-option value="lsv" >lsv</el-option>
@@ -30,7 +30,7 @@
     </el-select>
   </el-col>
   <el-col :span="12">
-        <h3>Y - axis</h3>
+        <h3>Blue Plot</h3>
       <!--    X DROP DOWN   -->
     <el-select v-model="dataTermNew.x" class="m-2" placeholder="Select" size="large">
        <el-option value="No Gene Data" selected>No Gene Data</el-option>
@@ -45,7 +45,7 @@
     </el-select>
  <!--  Y DROP DOWN   -->
     <el-select  v-model="dataTermNew.y" class="m-2" placeholder="Select" size="large">
-      <el-option value="No Cardio Data" selected>No Cardio Data</el-option>
+      <el-option value="No Heart Section" selected>No Heart Section</el-option>
       <el-option value="ledv" >ledv</el-option>
       <el-option value="lesv" >lesv</el-option>
       <el-option value="lsv" >lsv</el-option>
@@ -86,13 +86,13 @@ name: "App",
 // FORM LOGIC - V_MODEL x
   const dataTerm = reactive({
       x: 'Gene',
-      y: 'Cardio Data',
+      y: 'Heart Section',
       chart: 'line',
    })
 
      const dataTermNew = reactive({
       x: 'Gene',
-      y: 'Cardio Data',
+      y: 'Heart Section',
    })
 
 const isVis = ref('false')

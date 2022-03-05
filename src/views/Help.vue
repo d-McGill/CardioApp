@@ -90,13 +90,15 @@ components: {
 
 <style scoped>
 
-
 .info{
   font-size:25px;
 }
 .infoButton{
   padding:20px;
+  background-color:#409eff;
 }
+
+
 p{
   text-align: left;
 }
@@ -116,8 +118,8 @@ p{
   color: white;
   cursor: pointer; 
   width: 50%; 
-   margin-top: 5rem;
-   font-size: 20px;
+  margin-top: 5rem;
+  font-size: 20px;
 }
 
 .el-main {

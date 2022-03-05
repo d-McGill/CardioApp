@@ -9,7 +9,7 @@
       <el-option value="Takotsubo cardiomyopathy">Takotsubo cardiomyopathy</el-option>
       <el-option value="Right ventricular cardiomyopathy">Right ventricular cardiomyopathy</el-option>
     </el-select>
-    <input type="file" ref="doc" @change="change" id="file" class="inputfile" name="file" />
+    <input type="file" ref="doc" @change="change" id="file" class="inputfile" name="file" accept="application/JSON" />
     <label for="file">Choose a file</label>
     <br/><br/>
     <el-button class="ml-3" type="success" @click="submitUpload(jsonC)">Upload Data</el-button>
