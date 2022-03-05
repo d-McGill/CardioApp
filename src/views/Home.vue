@@ -1,7 +1,6 @@
 <template>
 
 <div>
-
 <el-main>
 <el-row class="row-bg" justify="center">
     <el-col :span="1"></el-col>
@@ -15,7 +14,6 @@
       <br/>
       <el-button v-if="!user" @click="$router.push('login')" type="primary">Login</el-button> 
       <el-button v-if="!user" @click="$router.push('register')" type="primary">Register</el-button>
-      <el-button v-if="user" @click="logout, $router.push('login')" type="primary">Logout</el-button>
 </el-col>
 
     <el-col :span="1"></el-col>
@@ -45,32 +43,19 @@ export default {
         }
       });
       
-      function logout() {
 
-      firebaseAuthentication.signOut().then(
-        () => {
-          user.value = null;
-          this.$router.replace("/login");
-        },
-        error => {
-          error.value = error.message;
-        }
-      );
-    }
     return {
-      user,
-      logout,
+      user
     };
   },
 
   components: {
     RssFeed
-
   }
 };
 
 </script>
-<style>
+<style scoped>
 .innerCar {
     padding: 2% 0% 5% 0%;
     background-color: #eee;

@@ -1,15 +1,22 @@
 <template>
 <br/>
 <el-select v-model="selectDD" class="m-2" placeholder="Hypertrophic Cardiomyopathy" size="large">
-       <el-option value="Other">Other</el-option>  
+      <el-option value="Cardiomyopathy"></el-option>
+      <el-option value="Noncompaction cardiomyopathy"></el-option>
+      <el-option value="Restrictive cardiomyopathy">Restrictive cardiomyopathy</el-option>
+      <el-option value="Atrial cardiomyopathy">Atrial cardiomyopathy</el-option>
+      <el-option value="Dilated cardiomyopathy">Dilated cardiomyopathy</el-option>
+      <el-option value="Takotsubo cardiomyopathy">Takotsubo cardiomyopathy</el-option>
+      <el-option value="Right ventricular cardiomyopathy">Right ventricular cardiomyopathy</el-option>
     </el-select>
     <input type="file" ref="doc" @change="change" id="file" class="inputfile" name="file" />
     <label for="file">Choose a file</label>
     <el-button class="ml-3" type="success" @click="submitUpload(jsonC)">Upload Data</el-button>
      <div v-if="content">
-       <table class="fileTable">
+       <table class="fileTable" v-if="watcher == 'true'">
          <tr>
-           <td style="width:50%">{{fileName}}</td>
+           <td v-if="watcherSubmit == 'false'" style="width:50%">{{fileName}}</td>
+           <td v-if="watcherSubmit == 'true'" style="width:50%">Uploaded!</td>
            <td><button @click="cancelUpload" class="xButton">X</button></td>
          </tr>
           </table>
@@ -30,6 +37,8 @@ const content = ref();
 const fileName = ref();
 const jsonC = ref(); 
 const selectDD = ref();
+const watcher = ref('');
+const watcherSubmit = ref('');
 
 const handleExceed = (files) => {
   upload.value.clearFiles()
@@ -122,15 +131,19 @@ const submitUpload = (jsonC) => {
 
 
 }
-
+watcherSubmit.value = 'true';
 }
 
 
 const cancelUpload = () =>{
   fileName.value = "";
+  watcher.value = 'false';
 }
 
 function change(e){
+      fileName.value = "";
+      watcher.value = 'true';
+      watcherSubmit.value = 'false';
       const file = e.target.files[0];
       const reader = new FileReader();
       if (file.name.includes(".json")) {
@@ -154,7 +167,7 @@ function change(e){
 }
 
 
-  return {handleExceed, submitUpload, upload, handleBefore, change, content,cancelUpload, fileName, jsonC, selectDD}
+  return {handleExceed, submitUpload, upload, handleBefore, change, content,cancelUpload, fileName, jsonC, selectDD, watcher, watcherSubmit}
     },
 }
 </script>
