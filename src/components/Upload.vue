@@ -1,7 +1,13 @@
 <template>
 <br/>
 <el-select v-model="selectDD" class="m-2" placeholder="Hypertrophic Cardiomyopathy" size="large">
-       <el-option value="Other">Other</el-option>  
+      <el-option value="Cardiomyopathy"></el-option>
+      <el-option value="Noncompaction cardiomyopathy"></el-option>
+      <el-option value="Restrictive cardiomyopathy">Restrictive cardiomyopathy</el-option>
+      <el-option value="Atrial cardiomyopathy">Atrial cardiomyopathy</el-option>
+      <el-option value="Dilated cardiomyopathy">Dilated cardiomyopathy</el-option>
+      <el-option value="Takotsubo cardiomyopathy">Takotsubo cardiomyopathy</el-option>
+      <el-option value="Right ventricular cardiomyopathy">Right ventricular cardiomyopathy</el-option>
     </el-select>
     <input type="file" ref="doc" @change="change" id="file" class="inputfile" name="file" />
     <label for="file">Choose a file</label>

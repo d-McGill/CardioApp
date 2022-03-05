@@ -15,7 +15,7 @@
 </div>
 </template>
 
-<script>
+<script scoped>
 import {  ref} from "vue";
 import axios from 'axios';
 

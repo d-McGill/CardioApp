@@ -1,7 +1,6 @@
 <template>
 
 <div>
-<h1 v-if="name"> Welcome {{name}} </h1>
 <el-main>
 <el-row class="row-bg" justify="center">
     <el-col :span="1"></el-col>
@@ -34,12 +33,9 @@ export default {
       data () {
 
       const user = ref(null);
-      const name = ref('');
       firebaseAuthentication.onAuthStateChanged(currentUser =>{
         if(currentUser) {
           user.value = currentUser.email;
-          name.value = currentUser.displayName;
-          console.log(currentUser);
           this.log = firebaseAuthentication.currentUser || true;
           this.sign = firebaseAuthentication.currentUser || false;
         } else {
@@ -49,8 +45,7 @@ export default {
       
 
     return {
-      user,
-      name
+      user
     };
   },
 
@@ -60,7 +55,7 @@ export default {
 };
 
 </script>
-<style>
+<style scoped>
 .innerCar {
     padding: 2% 0% 5% 0%;
     background-color: #eee;
