@@ -439,6 +439,7 @@
 <script>
 import Modal from "../components/Modal.vue";
 import { ref } from "vue";
+
 import { firebaseFireStore, firebaseAuthentication } from "@/firebase/database";
 //import firebase from "firebase/app";
 export default {
@@ -446,6 +447,7 @@ export default {
     Modal,
   },
   setup() {
+
     const isOpen = ref(false);
     const tableVis = ref('false');
     const userData = ref('false');
@@ -637,7 +639,7 @@ export default {
     function deleteUserAccount(){
       
       confirmDeletion.value = 'true';
-
+      
 
     }
 
@@ -658,11 +660,13 @@ export default {
           firebaseFireStore.collection("users").doc(user.value.uid).delete({
             
           });
+
             isOpen.value = false;
           })
 
         }
-
+        document.location.href="/";
+            
 
       });
 
@@ -795,6 +799,8 @@ ul {
     border: none;
     min-height: 100vh;
 }
+
+
 
 label {
   font-weight: 900;

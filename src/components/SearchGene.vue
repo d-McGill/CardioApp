@@ -153,7 +153,51 @@ export default {
 };
 </script>
 
-<style>
+
+<style scoped>
+.dark table {
+    background-color: #15202B;
+    color: #fff;
+    
+}
+ table{
+    margin:2% 5%;
+    box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);
+    border-radius: 8px;
+    background-color:#eee;
+    padding:1% 5%;
+    width:100%;
+  }
+
+    table th{
+    text-align: left !important;
+    font-size: 26px;
+    font-weight: 900;
+  }
+
+  td {
+    text-align: left;
+    font-size: 25px;
+    vertical-align: top;
+}
+
+.el-button {
+  width:25%;
+  font-size: 18pt;
+  padding: 20px;
+}
+.el-button  a{
+  text-decoration: none;
+  color:#fff;
+}
+
+.el-select--large {
+    line-height: 40px;
+    width: 25%;
+    margin: 20px;
+}
+
+ 
   .el-button {
     margin: 5px;
   } 

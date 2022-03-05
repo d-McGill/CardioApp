@@ -75,12 +75,13 @@ export default {
 }
 
 .dark .vue-modal-content {
-    background-color: #15202B;
+    background-color: #15202B !important;
 }
 
 .dark .vue-modal{
-    background: #15202B;
+    background: #15202B !important;
 }
+
 
 .dark #tab-second {
     color: #fff;
@@ -96,11 +97,7 @@ export default {
     
 }
 
-.dark table {
-    background-color: #15202B;
-    color: #fff;
-    
-}
+
 
 .dark .fileTable {
     background-color: #15202B;

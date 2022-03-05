@@ -11,6 +11,7 @@
     </el-select>
     <input type="file" ref="doc" @change="change" id="file" class="inputfile" name="file" />
     <label for="file">Choose a file</label>
+    <br/><br/>
     <el-button class="ml-3" type="success" @click="submitUpload(jsonC)">Upload Data</el-button>
      <div v-if="content">
        <table class="fileTable" v-if="watcher == 'true'">

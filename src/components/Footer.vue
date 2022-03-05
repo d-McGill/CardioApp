@@ -13,6 +13,7 @@ footer {
     bottom: 0;
     position: fixed;
     text-align: right;
+    z-index: 1;
 }
 
 footer a{

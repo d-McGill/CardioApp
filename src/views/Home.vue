@@ -8,7 +8,7 @@
       <h1 class="title">Cardio App</h1>
       <p>An application that brings all relevant research cardiomyopathy data in one place.
          Analyse, contribute, and learn with our and external data sets.
-         Create an account to get started or register in a few easy steps. In the meantime here are some definitions. </p>
+         Create an account to get started or register in a few easy steps. In the meantime here are the latest research and news articles in the cardiomyopathy space. </p>
       <RssFeed />
       <p>Peaked your interest or have something to add? Get started here....</p>
       <br/>
