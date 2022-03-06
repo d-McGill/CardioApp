@@ -648,25 +648,20 @@ export default {
       confirmDeletion.value = 'false';
 
     }
-
     function confirmAccountDelete(){
 
-
+        firebaseFireStore.collection("users").doc(user.value.uid).delete({});
         firebaseAuthentication.onAuthStateChanged((currentUser) => {
         if (currentUser) {
           user.value = currentUser;
           currentUser.delete()
           .then(function(){
-          firebaseFireStore.collection("users").doc(user.value.uid).delete({
-            
-          });
-
             isOpen.value = false;
+            document.location.href="/";
           })
 
         }
-        document.location.href="/";
-            
+
 
       });
 
