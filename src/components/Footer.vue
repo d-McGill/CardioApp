@@ -1,6 +1,6 @@
 <template>
 <footer>
- <router-link to="/help">Need Help?</router-link>
+ <router-link to="/help" class="helpButton">Need Help?</router-link>
 </footer>
 </template>
 <script>
