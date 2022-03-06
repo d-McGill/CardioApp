@@ -95,7 +95,7 @@ function getAtrCardio() {
 
 </style>
 
-<style>
+<style scoped>
 .el-carousel__container{
     margin: 5% 0;
     border-radius: 8px;

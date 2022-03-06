@@ -1,9 +1,6 @@
 <template>
 
 <div>
-<el-aside>
-  
-</el-aside>
 <el-main>
 <el-row class="row-bg" justify="center">
     <el-col :span="1"></el-col>
@@ -11,23 +8,23 @@
       <h1 class="title">Cardio App</h1>
       <p>An application that brings all relevant research cardiomyopathy data in one place.
          Analyse, contribute, and learn with our and external data sets.
-         Create an account to get started or register in a few easy steps. In the meantime here are some definitions. </p>
-      <FactsAPI />
+         Create an account to get started or register in a few easy steps. In the meantime here are the latest research and news articles in the cardiomyopathy space. </p>
+      <RssFeed />
       <p>Peaked your interest or have something to add? Get started here....</p>
       <br/>
       <el-button v-if="!user" @click="$router.push('login')" type="primary" class="loginButton">Login</el-button> 
       <el-button v-if="!user" @click="$router.push('register')" type="primary" class="RegisterButton">Register</el-button>
-      <el-button v-if="user" @click="logout, $router.push('login')" type="primary">Logout</el-button>
 </el-col>
 
     <el-col :span="1"></el-col>
+   
   </el-row>
 </el-main>
 </div>
 </template>
 <script>
 
-import FactsAPI from '../components/FactsAPI.vue';
+import RssFeed from '../components/RssFeed.vue';
 import { ref } from "vue";
 import { firebaseAuthentication } from "@/firebase/database";
 export default {
@@ -46,32 +43,19 @@ export default {
         }
       });
       
-      function logout() {
 
-      firebaseAuthentication.signOut().then(
-        () => {
-          user.value = null;
-          this.$router.replace("/login");
-        },
-        error => {
-          error.value = error.message;
-        }
-      );
-    }
     return {
-      user,
-      logout,
+      user
     };
   },
 
   components: {
-    FactsAPI
-
+    RssFeed
   }
 };
 
 </script>
-<style>
+<style scoped>
 .innerCar {
     padding: 2% 0% 5% 0%;
     background-color: #eee;
@@ -93,4 +77,4 @@ export default {
   text-decoration: none;
   color:#fff;
 }
-</style>
+</style> 

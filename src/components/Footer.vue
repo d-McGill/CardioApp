@@ -6,13 +6,14 @@
 <script>
 
 </script>
-<style>
+<style scoped>
 footer {
     height: 7%;
     width: 100%;
     bottom: 0;
     position: fixed;
     text-align: right;
+    z-index: 1;
 }
 
 footer a{

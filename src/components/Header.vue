@@ -7,8 +7,8 @@
       <div index="3" class="nav-link" v-if="!user"><router-link to="/register">Register</router-link></div>
       <div index="4" class="nav-link" v-if="user"><router-link to="/dashboard">Dashboard</router-link></div>
       <div index="4" class="nav-link" v-if="user"><router-link to="/search">Learn</router-link></div>
-      <div index="6" class="nav-link"><router-link :to="{ name: 'Login'}" v-if="user" @click="logout"> Logout</router-link></div> 
-      <div index="7" class="nav-link" v-if="user"><router-link to="/profile">Profile</router-link></div>    
+      <div index="6" class="nav-link" v-if="user"><router-link to="/profile">Profile</router-link></div>
+      <div index="7" class="nav-link"><router-link :to="{ name: 'Login'}" v-if="user" @click="logout"> Logout</router-link></div> 
     </nav>
     <Toggle :mode="mode" @toggle="$emit('toggle')"/>
 </header>

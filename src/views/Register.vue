@@ -47,7 +47,7 @@
 
   </div>
     <el-form-item>
-      <el-button type="primary" style="margin: auto" @click="register" class="registerButton">Register</el-button>
+      <el-button type="primary" style="margin: auto; z-index: 2;" @click="register" class="registerButton">Register</el-button>
     </el-form-item>
 
   </el-form>
@@ -124,7 +124,7 @@ export default {
                      });
 
                   userCredentials.user.sendEmailVerification(); 
-                  router.replace("login");
+                  router.replace("dashboard");
                 
                 });
             },

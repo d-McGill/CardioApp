@@ -1,12 +1,23 @@
 <template>
 <br/>
-    <input type="file" ref="doc" @change="change" id="file" class="inputfile" name="file" />
+<el-select v-model="selectDD" class="m-2" placeholder="Hypertrophic Cardiomyopathy" size="large">
+      <el-option value="Cardiomyopathy"></el-option>
+      <el-option value="Noncompaction cardiomyopathy"></el-option>
+      <el-option value="Restrictive cardiomyopathy">Restrictive cardiomyopathy</el-option>
+      <el-option value="Atrial cardiomyopathy">Atrial cardiomyopathy</el-option>
+      <el-option value="Dilated cardiomyopathy">Dilated cardiomyopathy</el-option>
+      <el-option value="Takotsubo cardiomyopathy">Takotsubo cardiomyopathy</el-option>
+      <el-option value="Right ventricular cardiomyopathy">Right ventricular cardiomyopathy</el-option>
+    </el-select>
+    <input type="file" ref="doc" @change="change" id="file" class="inputfile" name="file" accept="application/JSON" />
     <label for="file">Choose a file</label>
+    <br/><br/>
     <el-button class="ml-3" type="success" @click="submitUpload(jsonC)">Upload Data</el-button>
      <div v-if="content">
-       <table class="fileTable">
+       <table class="fileTable" v-if="watcher == 'true'">
          <tr>
-           <td style="width:50%">{{fileName}}</td>
+           <td v-if="watcherSubmit == 'false'" style="width:50%">{{fileName}}</td>
+           <td v-if="watcherSubmit == 'true'" style="width:50%">Uploaded!</td>
            <td><button @click="cancelUpload" class="xButton">X</button></td>
          </tr>
           </table>
@@ -26,6 +37,9 @@ const upload = ref();
 const content = ref();
 const fileName = ref();
 const jsonC = ref(); 
+const selectDD = ref();
+const watcher = ref('');
+const watcherSubmit = ref('');
 
 const handleExceed = (files) => {
   upload.value.clearFiles()
@@ -42,52 +56,95 @@ const handleBefore = (file)=>{
 const submitUpload = (jsonC) => {
  
  var user = firebase.auth().currentUser;
-
+ var timeStamp = Date().toString();
+ console.log(timeStamp);
   for(var i = 0; i < jsonC.length; i++) {
         var obj = jsonC[i];
 
-        firebase.firestore().collection("graphdata").add({
-        user: user.uid, 
-        ledv: obj.ledv,
-        redv: obj.redv,
-        lesv: obj.lesv,
-        resv: obj.resv,
-        lvef: obj.lvef,
-        rvef: obj.rvef,
-        lvmass: obj.lvmass,
-        lsv: obj.lsv,
-        rsv: obj.rsv,        
-        scar: obj.scar,
-        female: obj.female,
-        AgeatMRI: obj.AgeatMRI,
-        ApicalHCM: obj.ApicalHCM,
-        SuddenCardiacDeath: obj.SuddenCardiacDeath,
-        Hypertension: obj.Hypertension,
-        Diabetes: obj.Diabetes,
-        Myectomy: obj.Myectomy,
-        MYH7: obj.MYH7,
-        MYBPC3mutation: obj.MYBPC3mutation,
-        TNNT2mutation: obj.TNNT2mutation,
-        ACTCmutation: obj.ACTCmutation,
-        TPM1: obj.TPM1,
-        TNNCI: obj.TNNCI,
-        TNNI3: obj.TNNI3,
-        MYL2: obj.MYL2,
-        TTN: obj.TTN
+        if(selectDD.value != null)
+        {
+          firebase.firestore().collection(selectDD.value).add({
+            user: user.uid, 
+            ledv: obj.ledv,
+            redv: obj.redv,
+            lesv: obj.lesv,
+            resv: obj.resv,
+            lvef: obj.lvef,
+            rvef: obj.rvef,
+            lvmass: obj.lvmass,
+            lsv: obj.lsv,
+            rsv: obj.rsv,        
+            scar: obj.scar,
+            female: obj.female,
+            AgeatMRI: obj.AgeatMRI,
+            ApicalHCM: obj.ApicalHCM,
+            SuddenCardiacDeath: obj.SuddenCardiacDeath,
+            Hypertension: obj.Hypertension,
+            Diabetes: obj.Diabetes,
+            Myectomy: obj.Myectomy,
+            MYH7: obj.MYH7,
+            MYBPC3mutation: obj.MYBPC3mutation,
+            TNNT2mutation: obj.TNNT2mutation,
+            ACTCmutation: obj.ACTCmutation,
+            TPM1: obj.TPM1,
+            TNNCI: obj.TNNCI,
+            TNNI3: obj.TNNI3,
+            MYL2: obj.MYL2,
+            TTN: obj.TTN,
+            CreatedOn: timeStamp
 
 
-  })
+             })
+          }
+          else{
+              firebase.firestore().collection("HypertrophicCardio").add({
+              user: user.uid, 
+              ledv: obj.ledv,
+              redv: obj.redv,
+              lesv: obj.lesv,
+              resv: obj.resv,
+              lvef: obj.lvef,
+              rvef: obj.rvef,
+              lvmass: obj.lvmass,
+              lsv: obj.lsv,
+              rsv: obj.rsv,        
+              scar: obj.scar,
+              female: obj.female,
+              AgeatMRI: obj.AgeatMRI,
+              ApicalHCM: obj.ApicalHCM,
+              SuddenCardiacDeath: obj.SuddenCardiacDeath,
+              Hypertension: obj.Hypertension,
+              Diabetes: obj.Diabetes,
+              Myectomy: obj.Myectomy,
+              MYH7: obj.MYH7,
+              MYBPC3mutation: obj.MYBPC3mutation,
+              TNNT2mutation: obj.TNNT2mutation,
+              ACTCmutation: obj.ACTCmutation,
+              TPM1: obj.TPM1,
+              TNNCI: obj.TNNCI,
+              TNNI3: obj.TNNI3,
+              MYL2: obj.MYL2,
+              TTN: obj.TTN,
+              CreatedOn: timeStamp
+
+            })
+          }
+
+
+}
+watcherSubmit.value = 'true';
 }
 
-       console.log(jsonC.value)
-}
 
 const cancelUpload = () =>{
   fileName.value = "";
+  watcher.value = 'false';
 }
 
 function change(e){
-
+      fileName.value = "";
+      watcher.value = 'true';
+      watcherSubmit.value = 'false';
       const file = e.target.files[0];
       const reader = new FileReader();
       if (file.name.includes(".json")) {
@@ -106,11 +163,12 @@ function change(e){
         };
         reader.onerror = (err) => console.log(err);
         reader.readAsText(file);
+
       } 
 }
 
 
-  return {handleExceed, submitUpload, upload, handleBefore, change, content,cancelUpload, fileName, jsonC}
+  return {handleExceed, submitUpload, upload, handleBefore, change, content,cancelUpload, fileName, jsonC, selectDD, watcher, watcherSubmit}
     },
 }
 </script>
@@ -231,5 +289,11 @@ function change(e){
     opacity: .75;
     color: var(--el-text-color-regular);
     font-size: 30pt; }
+
+.el-select--large {
+    line-height: 40px;
+    margin: 0 1%;
+    width: 15rem;
+}
 
 </style>

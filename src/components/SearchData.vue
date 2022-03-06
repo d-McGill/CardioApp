@@ -68,9 +68,14 @@ export default {
 };
 </script>
 
-<style>
 
-  table{
+<style scoped>
+.dark table {
+    background-color: #15202B;
+    color: #fff;
+    
+}
+ table{
     margin:2% 5%;
     box-shadow: 0 0 8px rgba(0.0,0.0,0.0,0.2);
     border-radius: 8px;
@@ -90,7 +95,6 @@ export default {
     font-size: 25px;
     vertical-align: top;
 }
-
 .el-button {
   width:25%;
   font-size: 18pt;

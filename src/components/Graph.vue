@@ -51,7 +51,7 @@ export default {
         curve: "straight",
       },
       title: {
-        text: "A graph showing the comparison between the " + props.graphNameX + " gene and " + props.graphNameY + " data.",
+        text: "A graph showing the comparison between two genes mutations within two heart sections",
         align: "left",
       },
       grid: {
@@ -60,11 +60,11 @@ export default {
       },
       xaxis: {
         title: {
-          text: props.grapNameX,
+          text: "Data Points",
         },
       },
       yaxis: {
-        title: props.graphNameY,
+        title: "Values",
       },
       legend: {
         position: "top",

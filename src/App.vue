@@ -44,7 +44,7 @@ export default {
 .app {
   width: 100vw;
   min-height: 100vh;
-  background: #f3f3f3;
+  background: #eee;
   color: #2c3e50;
   transition: background 0.3s ease-in-out;
   font-family: Avenir, Helvetica, Arial, sans-serif; 
@@ -74,6 +74,15 @@ export default {
 
 }
 
+.dark .vue-modal-content {
+    background-color: #15202B !important;
+}
+
+.dark .vue-modal{
+    background: #15202B !important;
+}
+
+
 .dark #tab-second {
     color: #fff;
 }
@@ -88,11 +97,7 @@ export default {
     
 }
 
-.dark table {
-    background-color: #15202B;
-    color: #fff;
-    
-}
+
 
 .dark .fileTable {
     background-color: #15202B;
@@ -113,7 +118,11 @@ export default {
 .el-empty__image {
     margin-top: 3%;
 }
-
+.vue-modal-content {
+    background-color: #eee;  
+    border: none;
+    min-height: 100vh;
+}
 
 html{
   background-color: #f3f3f3;
@@ -122,4 +131,5 @@ html{
 .dark html{
   background-color: #192734;
 }
+
 </style>
