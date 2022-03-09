@@ -278,9 +278,13 @@ const graphNameX = ref('')
           
       });
 
+
  
         isVis.value =  'true'
         
+        graphX.value.sort(function(a, b){return a-b})
+        graphY.value.sort(function(a, b){return a-b})
+
          });
   }
 

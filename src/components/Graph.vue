@@ -59,12 +59,18 @@ export default {
         },
       },
       xaxis: {
+        min: 0,
+        categories: props.graphDataX,
         title: {
-          text: "Data Points",
+          text: props.graphNameX  + " Values",
         },
       },
       yaxis: {
-        title: "Values",
+        min: 0,
+        categories: props.graphDataY,
+          title: {
+          text: props.graphNameY  + " Values",
+        },
       },
       legend: {
         position: "top",
