@@ -16,6 +16,7 @@
         <el-col :span="16">
       
       <div v-if="tableVis == 'true'" class="tableWrapper">
+      <h1 v-if="!snapData.length">No Hypertrophic Cardiomyopathy data uploaded</h1>
       <table class="tableContent">
         <thead>
           <th>Action</th>
