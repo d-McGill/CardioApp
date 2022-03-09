@@ -1,7 +1,7 @@
 <template>
 <el-row style="padding:0 15%;" >
   <el-col :span="12" >
-    <h3>Green Plot</h3>
+    <h3>Y - Axis</h3>
   <!--    X DROP DOWN   -->
     <el-select v-model="dataTerm.x" class="m-2" placeholder="Select" size="large">
        <el-option value="No Gene Data" selected>No Gene Data</el-option>
@@ -30,7 +30,7 @@
     </el-select>
   </el-col>
   <el-col :span="12">
-        <h3>Blue Plot</h3>
+        <h3>X - Axis</h3>
       <!--    X DROP DOWN   -->
     <el-select v-model="dataTermNew.x" class="m-2" placeholder="Select" size="large">
        <el-option value="No Gene Data" selected>No Gene Data</el-option>
@@ -278,9 +278,13 @@ const graphNameX = ref('')
           
       });
 
+
  
         isVis.value =  'true'
         
+        graphX.value.sort(function(a, b){return a-b})
+        graphY.value.sort(function(a, b){return a-b})
+
          });
   }
 
